@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('admin');
 });
+
+Route::get('/categorias', 'FormulariosController@categorias');
+Route::get('/subcategorias', 'FormulariosController@subcategorias');
+Route::get('/articulos', 'FormulariosController@articulos');
