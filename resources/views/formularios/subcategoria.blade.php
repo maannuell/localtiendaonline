@@ -24,12 +24,12 @@
        <div class="form-grup">
            <label for="sexo">Categoria:</label>
            <select name="sexo" class="form-control" required>
-               <option value="">Selecionar</option>
+            @foreach($categoria as $c)
+               <option value="{{$c->id}}">{{$c->nombre}}</option>
               
-               <option value="0" selected>Femenino</option>
-               <option value="1">Masculino</option>
+             
                 
-              
+            @endforeach
                
            </select>
        </div>

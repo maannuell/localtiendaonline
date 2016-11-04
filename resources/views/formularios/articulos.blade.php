@@ -15,9 +15,8 @@
 
 
 
-<form  id="f_nuevo_usuario"  method="post"  action="agregar_nuevo_usuario" class="form-horizontal form_entrada" >                
-  
-  <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">              
+<form action="{{url('/guardarUsuario')}}" method="POST">
+       <input type="hidden" name="_token" value="{{csrf_token()}}">          
 
 
 <div class="box-body col-xs-12">

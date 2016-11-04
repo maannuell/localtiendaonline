@@ -141,6 +141,8 @@
               <li class="active"><a href="{{url("/categorias")}}"><i class="fa fa-circle-o"></i>Agregar Categoria</a></li>
               <li class="active"><a href="{{url("/subcategorias")}}"><i class="fa fa-circle-o"></i>Agregar SubCategoria</a></li>
               <li class="active"><a href="{{url("/articulos")}}"><i class="fa fa-circle-o"></i>Agregar Articulo</a></li>
+              <li class="active"><a href="{{url("/marcas")}}"><i class="fa fa-circle-o"></i>Agregar Marca</a></li>
+              
                 
               </ul>
             </li>
