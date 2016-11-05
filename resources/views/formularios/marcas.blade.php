@@ -15,12 +15,12 @@
 
 
 
-   <form action="{{url('/guardarUsuario')}}" method="POST">
+   <form action="{{url('/guardarMarca')}}" method="POST">
        <input type="hidden" name="_token" value="{{csrf_token()}}">
 <div class="box-body col-xs-12">
 <div class="form-group col-xs-6">
                       <label>Nombre Marca</label>
-                      <input type="text" class="form-control" id="nomcate" name="nomcate" placeholder="Nombre Marca" >
+                      <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre Marca" >
 </div>
 <div class="form-group col-xs-6">
                       <label>Descripcion</label>

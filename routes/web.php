@@ -22,3 +22,5 @@ Route::get('/marcas','FormulariosController@marcas');
 
 //guardar
 Route::post('/guardarCategoria','CategoriasController@guardar');
+Route::post('/guardarMarca','MarcasController@guardar');
+Route::post('/guardarSubcategoria','SubcategoriaController@guardar');
