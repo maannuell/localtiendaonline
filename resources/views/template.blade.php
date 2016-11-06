@@ -210,8 +210,7 @@
                       <li><a href="#">Mac Pro</a></li>
                       <li><a href="#">Macbook</a></li>
                       <li><a href="#">PCs de Escritorio</a></li>
-                      <li><a href="#">Tabletas</a></li>
-                      <li><a href="#">Ipad</a></li>                                      
+                      <li><a href="#">Tabletas</a></li>                                     
                     </ul>
                   </li>
                   <li><a href="#">Gaming<span class="caret"></span></a>

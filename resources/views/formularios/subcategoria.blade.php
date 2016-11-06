@@ -13,31 +13,46 @@
 @section('contenido')
 <form action="{{url('/guardarSubcategoria')}}" method="POST">
        <input type="hidden" name="_token" value="{{csrf_token()}}">
-       <div class="form-grup">
-           <label for="subcategoria">Nombre Subcategoria:</label>
-           <input name="nombre" class="form-control" placeholder="nombre" type="text"  required >
-       </div>
-       <div class="form-grup">
-           <label for="descripcion">Descripcion:</label>
-           <input name="descripcion" type="text" class="form-control" placeholder="Descripcion"  required>
-       </div>
-       <div class="form-grup">
-           <label for="categoria">Categoria:</label>
-           <select name="categoria" class="form-control" required>
-            @foreach($categoria as $c)
-               <option value="{{$c->id}}">{{$c->nombre}}</option>
+      <fieldset>
+    <div class="form-group">
+      <label for="nombre" class="col-lg-2 control-label">Nombre Subcategoria</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" name="nombre" placeholder="Nombre Subcategoria" required> 
+      </div>
+    </div>
+    <hr>
+   <div class="form-group">
+      <label for="descripcion" class="col-lg-2 control-label">Descripcion</label>
+      <div class="col-lg-10">
+        <textarea class="form-control" rows="3" name="descripcion" required></textarea>
+        <span class="help-block">Descripcion a detalle de la Subcategoria.</span>
+      </div>
+    </div>
+
+       <div class="form-group">
+      <label for="marca" class="col-lg-2 control-label">Categoria</label>
+      <div class="col-lg-10">
+        <select class="form-control" name="marca">
+        @foreach($categoria as $c)
+        <option value="{{$c->id}}">{{$c->nombre}}</option>
               
              
                 
-            @endforeach
-               
-           </select>
-       </div>
-       <br>
+        @endforeach
+        </select>
+      
+      </div>
+      </div>
+
+      
+       <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
        <input type="submit" value="registrar" class="btn btn-primary">
-       <a href="{{url('consultarUsuarios')}}" class="btn btn-danger">Cancelar</a>
-   </form>
-</div>
+       <a href="{{url('/')}}" class="btn btn-danger">Cancelar</a>
+      </div>
+    </div>
+  </fieldset>
+</form>
 @stop
 
  

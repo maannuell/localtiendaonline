@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Categoria;
+use App\Marca;
+use App\Subcategoria;
 
 class FormulariosController extends Controller
 {
@@ -21,7 +23,9 @@ class FormulariosController extends Controller
 	}
 
 	public function articulos(){
-		return view('formularios.articulos');
+		$marca=Marca::all();
+		$subcategoria=Subcategoria::all();
+		return view('formularios.articulos',compact('marca','subcategoria'));
 	}
 
 	public function marcas(){

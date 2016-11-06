@@ -17,26 +17,32 @@
 
    <form action="{{url('/guardarMarca')}}" method="POST">
        <input type="hidden" name="_token" value="{{csrf_token()}}">
-<div class="box-body col-xs-12">
-<div class="form-group col-xs-6">
-                      <label>Nombre Marca</label>
-                      <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre Marca" >
-</div>
-<div class="form-group col-xs-6">
-                      <label>Descripcion</label>
-                      <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripcion Marca" >
-</div>
+ <fieldset>
+    <div class="form-group">
+      <label for="nombre" class="col-lg-2 control-label">Nombre Marca</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" name="nombre" placeholder="Nombre Marca" required> 
+      </div>
+    </div>
+    <hr>
+   <div class="form-group">
+      <label for="descripcion" class="col-lg-2 control-label">Descripcion</label>
+      <div class="col-lg-10">
+        <textarea class="form-control" rows="3" name="descripcion" required></textarea>
+        <span class="help-block">Descripcion a detalle de la Marca.</span>
+      </div>
+    </div>
 
 
 
 
-
-                 <input type="submit" value="registrar" class="btn btn-primary">
-                 <a href="{{url('/')}}" class="btn btn-danger">Cancelar</a>
-
-
-
+           <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+       <input type="submit" value="registrar" class="btn btn-primary">
+       <a href="{{url('/')}}" class="btn btn-danger">Cancelar</a>
+      </div>
+    </div>
+  </fieldset>
 </form>
 
-</div>
 @stop
