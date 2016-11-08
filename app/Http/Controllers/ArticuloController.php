@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Articulo;
+use App\Subcategoria;
+use DB;
+
 class ArticuloController extends Controller
 {
     //
@@ -20,4 +23,19 @@ class ArticuloController extends Controller
 
         return Redirect('articulos');
     }
+
+
+
+public function drop($id){
+    
+    $subcategorias =DB::table('subcategorias')
+    ->select('id','nombre')
+    ->where('id_categoria','=',$id)
+    ->get();
+   
+   return \Response::json($subcategorias);
+
+}
+
+ 
 }

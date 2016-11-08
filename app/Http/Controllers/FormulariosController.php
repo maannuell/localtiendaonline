@@ -24,8 +24,9 @@ class FormulariosController extends Controller
 
 	public function articulos(){
 		$marca=Marca::all();
+		$categoria=Categoria::all();
 		$subcategoria=Subcategoria::all();
-		return view('formularios.articulos',compact('marca','subcategoria'));
+		return view('formularios.articulos',compact('marca','subcategoria','categoria'));
 	}
 
 	public function marcas(){

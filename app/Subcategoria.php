@@ -8,4 +8,5 @@ class Subcategoria extends Model
 {
     //
      protected $table='subcategorias';
+
 }
