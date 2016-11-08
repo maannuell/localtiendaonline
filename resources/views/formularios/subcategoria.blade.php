@@ -11,7 +11,7 @@
 @stop
 
 @section('contenido')
-<form action="{{url('/guardarSubcategoria')}}" method="POST">
+<form class="form-horizontal" action="{{url('/guardarSubcategoria')}}" method="POST">
        <input type="hidden" name="_token" value="{{csrf_token()}}">
       <fieldset>
     <div class="form-group">
@@ -20,7 +20,6 @@
         <input type="text" class="form-control" name="nombre" placeholder="Nombre Subcategoria" required> 
       </div>
     </div>
-    <hr>
    <div class="form-group">
       <label for="descripcion" class="col-lg-2 control-label">Descripcion</label>
       <div class="col-lg-10">
@@ -32,7 +31,7 @@
        <div class="form-group">
       <label for="marca" class="col-lg-2 control-label">Categoria</label>
       <div class="col-lg-10">
-        <select class="form-control" name="marca">
+        <select class="form-control" name="categoria">
         @foreach($categoria as $c)
         <option value="{{$c->id}}">{{$c->nombre}}</option>
               

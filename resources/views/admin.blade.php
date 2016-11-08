@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
      <link rel="stylesheet" href="css/sistemalaravel.css">
+     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -195,12 +196,15 @@
         <strong>Copyright &copy; 2016 <a href="http://itculiacan.edu.mx">Proyecto Integrador</a>.</strong> All rights reserved.
       </footer>
 
+
+
+
     <!-- jQuery 2.1.4 -->
     <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-
+   
     <script>  $("#content-wrapper").css("min-height","2000px"); </script>
    
     <!-- Bootstrap 3.3.5 -->

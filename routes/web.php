@@ -25,3 +25,6 @@ Route::post('/guardarCategoria','CategoriasController@guardar');
 Route::post('/guardarMarca','MarcasController@guardar');
 Route::post('/guardarSubcategoria','SubcategoriaController@guardar');
 Route::post('/guardarArticulo','ArticuloController@guardar');
+
+
+Route::get('/sele/{id}','ArticuloController@drop');
