@@ -14,7 +14,7 @@
 
 
 
-<form class="form-horizontal" action="{{url('/guardarArticulo')}}" method="POST">
+<form class="form-horizontal" action="{{url('/guardarArticulo')}}" method="POST" enctype="multipart/form-data">
        <input type="hidden" name="_token" value="{{csrf_token()}}">
   <fieldset>
     <div class="form-group">
@@ -33,7 +33,7 @@
      <div class="form-group">
       <label for="precio" class="col-lg-2 control-label">Precio</label>
       <div class="col-lg-10">
-        <input type="number" class="form-control" name="precio" placeholder="Precio Articulo" required>
+        <input type="number" step="any" class="form-control" name="precio" placeholder="Precio Articulo" required>
       </div>
     </div>
 
@@ -41,6 +41,7 @@
       <label for="subcategoria" class="col-lg-2 control-label">Categoria</label>
       <div class="col-lg-10">
         <select class="form-control" name="categoria" id="categoria">
+        <option selected>Seleccione una Categoria</option>
          @foreach($categoria as $c)
         <option value="{{$c->id}}">{{$c->nombre}}</option>
               
@@ -74,7 +75,12 @@
       
       </div>
       </div>
-
+       <div class="form-group">
+              <label class="col-lg-2 control-label">Nuevo Archivo</label>
+              <div class="col-lg-10">
+                <input type="file" class="form-control" name="file" >
+              </div>
+            </div>
     
     <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
@@ -89,7 +95,7 @@
     $('select#categoria').change(function(){
         var catId = $(this).val();
        // $subcategoriasitems = $('.subcategoriasItems').remove();
-        $.get('/proyectoTienda2/public/sele/'+catId, function(data){
+        $.get('/proyectoTienda4/public/sele/'+catId, function(data){
                $('select#subcategoria').empty();
               
               $.each(data, function( key, value ) {               
