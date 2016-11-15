@@ -53,5 +53,24 @@ public function drop($id){
 
 }
 
+public function ver($id){
+
+  $articulo=DB::table('articulos')
+  ->select('id','nombre','descripcion','precio','imagen','existencia','promo')
+  ->where('id_subcategoria','=',$id)
+  ->get();
+   return view('productos',compact('articulo'));
+
+}
+
+public function detaver($id){
+
+  $articulo=DB::table('articulos')
+  ->select('id','nombre','descripcion','precio','imagen','existencia','promo')
+  ->where('id','=',$id)
+  ->first();
+   return view('prodetalle',compact('articulo'));
+
+}
  
 }

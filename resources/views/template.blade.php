@@ -137,7 +137,7 @@
                 <div class="aa-cartbox-summary">
                   <ul>
                     <li>
-                      <a class="aa-cartbox-img" href="#"><img src="img/woman-small-2.jpg" alt="img"></a>
+                      <a class="aa-cartbox-img" href="#"><img src="#" alt="img"></a>
                       <div class="aa-cartbox-info">
                         <h4><a href="#">Product Name</a></h4>
                         <p>1 x $250</p>
@@ -145,7 +145,7 @@
                       <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
                     </li>
                     <li>
-                      <a class="aa-cartbox-img" href="#"><img src="img/woman-small-1.jpg" alt="img"></a>
+                      <a class="aa-cartbox-img" href="#"><img src="#" alt="img"></a>
                       <div class="aa-cartbox-info">
                         <h4><a href="#">Product Name</a></h4>
                         <p>1 x $250</p>
@@ -203,14 +203,14 @@
                 <ul class="dropdown-menu">                
                   <li><a href="#">Computadoras<span class="caret"></span></a>
                       <ul class="dropdown-menu">
-                      <li><a href="#">All In One</a></li>
-                      <li><a href="#">iMac</a></li>
-                      <li><a href="#">iPad</a></li>
-                      <li><a href="#">Laptops</a></li>
-                      <li><a href="#">Mac Pro</a></li>
-                      <li><a href="#">Macbook</a></li>
-                      <li><a href="#">PCs de Escritorio</a></li>
-                      <li><a href="#">Tabletas</a></li>                                     
+                      <li><a href="{{url('/verproductos')}}/1">All In One</a></li>
+                      <li><a href="{{url('/verproductos')}}/2">iMac</a></li>
+                      <li><a href="{{url('/verproductos')}}/3">iPad</a></li>
+                      <li><a href="{{url('/verproductos')}}/4">Laptops</a></li>
+                      <li><a href="{{url('/verproductos')}}/5">Mac Pro</a></li>
+                      <li><a href="{{url('/verproductos')}}/6">Macbook</a></li>
+                      <li><a href="{{url('/verproductos')}}/7">PCs de Escritorio</a></li>
+                      <li><a href="{{url('/verproductos')}}/8">Tabletas</a></li>                                     
                     </ul>
                   </li>
                   <li><a href="#">Gaming<span class="caret"></span></a>
@@ -614,22 +614,22 @@
   </div>    
 
   <!-- jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="{{asset("https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js")}}"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="js/bootstrap.js"></script>  
+  <script src="{{asset("js/bootstrap.js")}}"></script>  
   <!-- SmartMenus jQuery plugin -->
-  <script type="text/javascript" src="js/jquery.smartmenus.js"></script>
+  <script type="text/javascript" src="{{asset("js/jquery.smartmenus.js")}}"></script>
   <!-- SmartMenus jQuery Bootstrap Addon -->
-  <script type="text/javascript" src="js/jquery.smartmenus.bootstrap.js"></script>  
+  <script type="text/javascript" src="{{asset("js/jquery.smartmenus.bootstrap.js")}}"></script>  
   <!-- Product view slider -->
-  <script type="text/javascript" src="js/jquery.simpleGallery.js"></script>
-  <script type="text/javascript" src="js/jquery.simpleLens.js"></script>
+  <script type="text/javascript" src="{{asset("js/jquery.simpleGallery.js")}}"></script>
+  <script type="text/javascript" src="{{asset("js/jquery.simpleLens.js")}}"></script>
   <!-- slick slider -->
-  <script type="text/javascript" src="js/slick.js"></script>
+  <script type="text/javascript" src="{{asset("js/slick.js")}}"></script>
   <!-- Price picker slider -->
-  <script type="text/javascript" src="js/nouislider.js"></script>
+  <script type="text/javascript" src="{{asset("js/nouislider.js")}}"></script>
   <!-- Custom js -->
-  <script src="js/custom.js"></script> 
+  <script src="{{asset("js/custom.js")}}"></script> 
 
   </body>
 </html>

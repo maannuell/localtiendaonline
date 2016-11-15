@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('productos');
+    return view('index');
 });
 //mostrar vistas 
 Route::get('/categorias', 'FormulariosController@categorias');
@@ -26,5 +26,7 @@ Route::post('/guardarMarca','MarcasController@guardar');
 Route::post('/guardarSubcategoria','SubcategoriaController@guardar');
 Route::post('/guardarArticulo','ArticuloController@guardar');
 
+Route::get('/verproductos/{id}','ArticuloController@ver');
+Route::get('/detaproducto/{id}','ArticuloController@detaver');
 
 Route::get('/sele/{id}','ArticuloController@drop');

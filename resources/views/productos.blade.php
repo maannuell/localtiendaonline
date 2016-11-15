@@ -38,29 +38,34 @@
             <div class="aa-product-catg-body">
               <ul class="aa-product-catg">
                 <!-- start single product item -->
+                @foreach($articulo as $a)
                 <li>
                   <figure>
-                    <a class="aa-product-img" href="#"><img src="img/women/girl-1.png" alt="polo shirt img"></a>
+                    <a class="aa-product-img" href="{{url("/detaproducto")}}/{{$a->id}}"><img src="{{asset("imgart/$a->imagen")}}" width="280" height="300" alt="polo shirt img"></a>
                     <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
                     <figcaption>
-                      <h4 class="aa-product-title"><a href="#">This is Title</a></h4>
-                      <span class="aa-product-price">$45.50</span><span class="aa-product-price"><del>$65.50</del></span>
-                      <p class="aa-product-descrip">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam accusamus facere iusto, autem soluta amet sapiente ratione inventore nesciunt a, maxime quasi consectetur, rerum illum.</p>
+                      <h4 class="aa-product-title"><a href="#">{{$a->nombre}}</a></h4>
+                      @if($a->promo>0)
+                      <span class="aa-product-price">${{number_format($a->precio-($a->precio*$a->promo), 2, '.', ',' )}}</span><span class="aa-product-price"><del>${{number_format( $a->precio, 2, '.', ',' )}}</del></span>
+                      <span class="aa-badge aa-sale" href="#">{{$a->promo*100}}%</span>
+                      @else
+                       <span class="aa-product-price">${{number_format( $a->precio, 2, '.', ',' )}}</span>
+                       @endif
+                      <p class="aa-product-descrip">{{$a->descripcion}}.</p>
                     </figcaption>
                   </figure>                         
                   <div class="aa-product-hvr-content">
+
                     <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
                     <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a>
                     <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>                            
+                  
                   </div>
                   <!-- product badge -->
-                  <span class="aa-badge aa-sale" href="#">SALE!</span>
+                
                 </li>
                 <!-- start single product item -->
-                            
-              </ul>
-              <!-- quick view modal -->                  
-              <div class="modal fade" id="quick-view-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                   <div class="modal fade" id="quick-view-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">                      
                     <div class="modal-body">
@@ -99,14 +104,15 @@
                           </div>
                         </div>
                         <!-- Modal view content -->
+                      
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <div class="aa-product-view-content">
                             <h3>T-Shirt</h3>
                             <div class="aa-price-block">
-                              <span class="aa-product-view-price">$34.99</span>
-                              <p class="aa-product-avilability">Avilability: <span>In stock</span></p>
+                              <span class="aa-product-view-price">{{$a->precio}}</span>
+                              <p class="aa-product-avilability">Avilability: <span>{{$a->existencia}}</span></p>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis animi, veritatis quae repudiandae quod nulla porro quidem, itaque quis quaerat!</p>
+                            <p>{{$a->descripcion}}</p>
                             <h4>Size</h4>
                             <div class="aa-prod-view-size">
                               <a href="#">S</a>
@@ -135,11 +141,18 @@
                             </div>
                           </div>
                         </div>
+                        
                       </div>
                     </div>                        
                   </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
+                </div><!-- /.-dialog -->
               </div>
+                    @endforeach      
+              </ul>
+
+              <!-- quick view modal -->                  
+             
+
               <!-- / quick view modal -->   
             </div>
             <div class="aa-product-catg-pagination">
@@ -289,7 +302,8 @@
     </div>
   </section>
   <!-- / product category -->
-
-
   @stop
+
+
+  
  
