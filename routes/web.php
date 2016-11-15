@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('admin');
+    return view('productos');
 });
 //mostrar vistas 
 Route::get('/categorias', 'FormulariosController@categorias');

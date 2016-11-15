@@ -36,6 +36,7 @@
         <input type="number" step="any" class="form-control" name="precio" placeholder="Precio Articulo" required>
       </div>
     </div>
+    
 
     <div class="form-group">
       <label for="subcategoria" class="col-lg-2 control-label">Categoria</label>
@@ -76,11 +77,36 @@
       </div>
       </div>
        <div class="form-group">
-              <label class="col-lg-2 control-label">Nuevo Archivo</label>
+              <label class="col-lg-2 control-label">Imagen Articulo</label>
               <div class="col-lg-10">
                 <input type="file" class="form-control" name="file" >
               </div>
             </div>
+
+             <div class="form-group">
+      <label for="existencia" class="col-lg-2 control-label">Existencia</label>
+      <div class="col-lg-10">
+        <input type="number" step="any" class="form-control" name="existencia" placeholder="Existencia de Articulo" required>
+      </div>
+    </div>
+     <div class="form-group">
+      <label for="promo" class="col-lg-2 control-label">Descuento</label>
+      <div class="col-lg-10">
+        <select class="form-control" name="promo">
+        <option value="0" selected>0%</option>
+        <option value="0.04">4%</option>
+        <option value="0.10">10%</option>
+        <option value="0.20">20%</option>
+        <option value="0.30">30%</option>
+        <option value="0.40">40%</option>
+        <option value="0.50">50%</option>
+              
+             
+              
+        </select>
+      
+      </div>
+      </div>
     
     <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">

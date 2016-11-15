@@ -33,6 +33,8 @@ class ArticuloController extends Controller
         $nuevo->id_subcategoria=$datos->input('subcategoria');
         $nuevo->id_marca=$datos->input('marca');
         $nuevo->imagen=$nombre;
+        $nuevo->existencia=$datos->input('existencia');
+        $nuevo->promo=$datos->input('promo');
         $nuevo->save();
 
         return Redirect('articulos');
