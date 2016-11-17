@@ -45,7 +45,7 @@
 
       <header class="main-header">
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="{{url("/")}}" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           
                   <span class="fa fa-shopping-cart"></span>
@@ -65,39 +65,37 @@
               <!-- Messages: style can be found in dropdown.less-->
             
               <!-- User Account: style can be found in dropdown.less -->
-              <li class="dropdown user user-menu">
+           <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="#" class="user-image" alt="User Image">
-                  <span class="hidden-xs">Usuario</span>
+                  <img src="{{asset("imguser/$user->imagen")}}" class="user-image" alt="User Image">
+                  <span class="hidden-xs">{{$user->name}}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    <img src="{{asset("imguser/$user->imagen")}}" class="img-circle" alt="User Image">
                     <p>
-                     Usuario
-                      <small>Member since Nov. 2012</small>
+                     {{$user->name}}
+                      <small>Miembro desde {{$user->created_at}}</small>
                     </p>
                   </li>
                   <!-- Menu Body -->
-                  <li class="user-body">
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Followers</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Sales</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Friends</a>
-                    </div>
-                  </li>
+               
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left">
                       <a href="#" class="btn btn-default btn-flat">Perfil</a>
                     </div>
                     <div class="pull-right">
-                      <a href="logout" class="btn btn-default btn-flat">Salir</a>
+                      <a class="btn btn-default btn-flat" href="{{ url('/logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Salir
+                                        </a>
+
+                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
                     </div>
                   </li>
                 </ul>

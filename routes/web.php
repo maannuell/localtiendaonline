@@ -14,12 +14,15 @@
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get('/administrador','FormulariosController@admi');
 //mostrar vistas 
 Route::get('/categorias', 'FormulariosController@categorias');
 Route::get('/subcategorias', 'FormulariosController@subcategorias');
 Route::get('/articulos', 'FormulariosController@articulos');
 Route::get('/marcas','FormulariosController@marcas');
-
+//comentarios guardar
+Route::post('guardacomentario/{id}','ArticuloController@comentarioguarda');
 //guardar
 Route::post('/guardarCategoria','CategoriasController@guardar');
 Route::post('/guardarMarca','MarcasController@guardar');
@@ -30,3 +33,7 @@ Route::get('/verproductos/{id}','ArticuloController@ver');
 Route::get('/detaproducto/{id}','ArticuloController@detaver');
 
 Route::get('/sele/{id}','ArticuloController@drop');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

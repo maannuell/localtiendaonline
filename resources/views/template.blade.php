@@ -95,12 +95,49 @@
               </div>
               <!-- / header top left -->
               <div class="aa-header-top-right">
+        
                 <ul class="aa-head-top-nav-right">
-                  <li><a href="account.html">Mi Cuenta</a></li>
+                 @if (Auth::guest())
+                            <li><a href="" data-toggle="modal" data-target="#login-modal">Iniciar</a></li>
+                            <li><a href="{{ url('/register') }}">Register</a></li>
+                        @else 
+                        @if (Auth::user()->id==1)
+                   <li class="hidden-xs"><a href="{{url("/administrador")}}">Admin</a></li>
+                   @else 
+                  
+                    @endif
+                          
+                  <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                  </a>
+                       <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="{{ url('/logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+
+                            
+
+
+
+
+
+                  </li>
+                  @endif
                   <li class="hidden-xs"><a href="wishlist.html">Deseos</a></li>
                   <li class="hidden-xs"><a href="cart.html">Mi Carrito</a></li>
                   <li class="hidden-xs"><a href="checkout.html">Revision</a></li>
-                  <li><a href="" data-toggle="modal" data-target="#login-modal">Iniciar</a></li>
+                
+
                 </ul>
               </div>
             </div>
@@ -596,12 +633,29 @@
         <div class="modal-body">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h4>Iniciar seccion o Registrarse</h4>
-          <form class="aa-login-form" action="">
+         
+          <form class="aa-login-form"  method="POST" action="{{url("/login")}}">
+           {{ csrf_field() }}
+            <div>
             <label for="">Usuario O Email<span>*</span></label>
-            <input type="text" placeholder="Usuario o Email">
+            <input  id="email" type="email" name="email" value="{{old('email')}}"  placeholder="Usuario o Email" required>
+            @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                                </div>
+                                <div>
             <label for="">Contraseña<span>*</span></label>
-            <input type="password" placeholder="Contraseña">
+            <input  id="password"  type="password" name="password" placeholder="Contraseña" required>
             <button class="aa-browse-btn" type="submit">Iniciar</button>
+
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                                </div>
             <label for="rememberme" class="rememberme"><input type="checkbox" id="rememberme"> Recordarme </label>
             <p class="aa-lost-password"><a href="#">Contraseña Olvidada?</a></p>
             <div class="aa-register-now">

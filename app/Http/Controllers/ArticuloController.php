@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Articulo;
 use App\Subcategoria;
 use DB;
+use App\Comentario;
+use Auth;
 
 class ArticuloController extends Controller
 {
@@ -64,12 +66,38 @@ public function ver($id){
 }
 
 public function detaver($id){
+   
+   $count=DB::table('comentarios')->where('id_articulo','=', $id)->count();
+   
+
+   $comentario=DB::table('comentarios As c')
+   ->join('users As u', 'u.id','=','c.id_usuario')
+   ->where('id_articulo','=', $id)
+   ->select('c.*','u.name','u.imagen')
+   ->get();
+
 
   $articulo=DB::table('articulos')
   ->select('id','nombre','descripcion','precio','imagen','existencia','promo')
   ->where('id','=',$id)
   ->first();
-   return view('prodetalle',compact('articulo'));
+   
+   return view('prodetalle',compact('articulo','comentario','count'));
+
+}
+
+public function comentarioguarda($id,Request $datos){
+
+   $nuevo= new Comentario();
+   $user = Auth::user();
+   $nuevo->id_articulo=$id;
+   $nuevo->id_usuario=$user->id;
+   $nuevo->descripcion=$datos->input('descripcion');
+   $nuevo->save();
+
+   return Redirect('/detaproducto/'.$id);
+
+
 
 }
  
