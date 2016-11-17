@@ -29,13 +29,7 @@
                       <p class="aa-product-avilability">Avilability: <span>{{$articulo->existencia}}</span></p>
                     </div>
                     <p>{{$articulo->descripcion}}</p>
-                    <h4>Size</h4>
-                    <div class="aa-prod-view-size">
-                      <a href="#">S</a>
-                      <a href="#">M</a>
-                      <a href="#">L</a>
-                      <a href="#">XL</a>
-                    </div>
+                  
                    
                     <div class="aa-prod-quantity">
                       <form action="">
@@ -48,9 +42,7 @@
                           <option value="5">6</option>
                         </select>
                       </form>
-                      <p class="aa-prod-category">
-                        Category: <a href="#">Polo T-Shirt</a>
-                      </p>
+                      
                     </div>
                     <div class="aa-prod-view-bottom">
                       <a class="aa-add-to-cart-btn" href="#">Añadir Al carrito</a>
@@ -65,7 +57,7 @@
                    
 
                    
-                <li><a href="#review" data-toggle="tab">Reviews</a></li> 
+                <li><a href="#review" data-toggle="tab">Comentarios</a></li> 
                              
               </ul>
 

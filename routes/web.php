@@ -37,3 +37,7 @@ Route::get('/sele/{id}','ArticuloController@drop');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+//importar excel
+
+Route::post('importExcel', 'MaatwebsiteDemoController@importExcel');
+Route::get('/excel', 'FormulariosController@excel');

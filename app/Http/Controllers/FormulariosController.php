@@ -32,7 +32,11 @@ class FormulariosController extends Controller
 
      
     }
+ public function excel(){
+ 	$user = Auth::user();
 
+ 	 return view('formularios.cargaarticulos', compact('user'));
+ }
     public function categorias()
 	{
 		$user =Auth::user();

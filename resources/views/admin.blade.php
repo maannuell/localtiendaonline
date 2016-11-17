@@ -134,6 +134,7 @@
               <li class="active"><a href="{{url("/subcategorias")}}"><i class="fa fa-circle-o"></i>Agregar SubCategoria</a></li>
               <li class="active"><a href="{{url("/articulos")}}"><i class="fa fa-circle-o"></i>Agregar Articulo</a></li>
               <li class="active"><a href="{{url("/marcas")}}"><i class="fa fa-circle-o"></i>Agregar Marca</a></li>
+              <li class="active"><a href="{{url("/excel")}}"><i class="fa fa-circle-o"></i>Importar Articulos</a></li>
               
                 
               </ul>
