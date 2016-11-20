@@ -36,4 +36,8 @@ class LoginController extends Controller
     {
         $this->middleware('guest', ['except' => 'logout']);
     }
+
+    public function redirectpath(){
+        return auth()->user()->id==1 ? '/administrador' : '/';
+    }
 }

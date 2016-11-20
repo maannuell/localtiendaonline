@@ -60,7 +60,7 @@ public function ver($id){
   $articulo=DB::table('articulos')
   ->select('id','nombre','descripcion','precio','imagen','existencia','promo')
   ->where('id_subcategoria','=',$id)
-  ->get();
+  ->paginate(3);
    return view('productos',compact('articulo'));
 
 }
@@ -100,5 +100,6 @@ public function comentarioguarda($id,Request $datos){
 
 
 }
+
  
 }

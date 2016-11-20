@@ -41,3 +41,8 @@ Route::get('/home', 'HomeController@index');
 
 Route::post('importExcel', 'MaatwebsiteDemoController@importExcel');
 Route::get('/excel', 'FormulariosController@excel');
+
+
+//consultas admin 
+Route::get('/consultacomentario','ComentarioController@consultar');
+Route::get('/eliminarcomentario/{id}','ComentarioController@eliminar');

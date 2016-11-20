@@ -25,7 +25,7 @@ class FormulariosController extends Controller
     	if ($user->id>1){
     		return Redirect('/');
     	}else{
-    return view ('admin', compact('user'));		
+    return view ('formularios.admininicio', compact('user'));		
     	}
        
 
