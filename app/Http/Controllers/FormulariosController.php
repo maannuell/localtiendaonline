@@ -18,11 +18,14 @@ class FormulariosController extends Controller
 
     $this->middleware('auth');
 }
+
+
+
     public function admi(){
 
     	$user = Auth::user();
 
-    	if ($user->id>1){
+    	if ($user->rol>1){
     		return Redirect('/');
     	}else{
     return view ('formularios.admininicio', compact('user'));		

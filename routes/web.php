@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('index');
 });
 
+
+//registrarse
+Route::get('/registrarse','RegistrousuariosController@register');
 Route::get('/administrador','FormulariosController@admi');
 //mostrar vistas 
 Route::get('/categorias', 'FormulariosController@categorias');

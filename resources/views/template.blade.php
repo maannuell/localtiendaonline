@@ -99,9 +99,9 @@
                 <ul class="aa-head-top-nav-right">
                  @if (Auth::guest())
                             <li><a href="" data-toggle="modal" data-target="#login-modal">Iniciar</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
+                            <li><a href="{{ url('/registrarse') }}">Registrarse</a></li>
                         @else 
-                        @if (Auth::user()->id==1)
+                        @if (Auth::user()->rol==1)
                    <li class="hidden-xs"><a href="{{url("/administrador")}}">Admin</a></li>
                    @else 
                   
@@ -116,7 +116,7 @@
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            Salir
                                         </a>
 
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
@@ -156,7 +156,7 @@
               <!-- logo  -->
               <div class="aa-logo">
                 <!-- Text based logo -->
-                <a href="index.html">
+                <a href="{{url("/")}}">
                   <span class="fa fa-shopping-cart"></span>
                   <p>Triple<strong>"B"</strong> <span>Su Comercializadora</span></p>
                 </a>
@@ -638,7 +638,7 @@
            {{ csrf_field() }}
             <div>
             <label for="">Usuario O Email<span>*</span></label>
-            <input  id="email" type="email" name="email" value="{{old('email')}}"  placeholder="Usuario o Email" required>
+            <input  id="email" type="text" name="email" value="{{old('email')}}"  placeholder="Usuario o Email" required>
             @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
