@@ -18,8 +18,13 @@ Route::get('/', function () {
 
 //registrarse
 Route::get('/registrarse','RegistrousuariosController@register');
+Route::post('/guardarusuario','RegistrousuariosController@guardar');
+Route::get('/consultausuario','RegistrousuariosController@consultar');
+
+
 Route::get('/administrador','FormulariosController@admi');
-//mostrar vistas 
+//mostrar vistas
+Route::get('/altausuarios','FormulariosController@usuarios'); 
 Route::get('/categorias', 'FormulariosController@categorias');
 Route::get('/subcategorias', 'FormulariosController@subcategorias');
 Route::get('/articulos', 'FormulariosController@articulos');

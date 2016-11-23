@@ -65,4 +65,8 @@ class FormulariosController extends Controller
 		$user=  Auth::user();
 		return view ('formularios.marcas',compact('user'));
 	}
+	public function usuarios(){
+		$user = Auth::user();
+		return view('formularios.altausuarios',compact('user'));
+	}
 }
