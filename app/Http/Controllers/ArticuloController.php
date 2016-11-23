@@ -100,6 +100,41 @@ public function comentarioguarda($id,Request $datos){
 
 
 }
+public function coninventario(){
+
+$user = Auth::user();
+
+    $articulo=DB::table('articulos As a')
+    ->join('subcategorias As s','s.id','=','a.id_subcategoria')
+    ->join('marcas As m','m.id','=','a.id_marca')
+    ->select('a.*','m.nombre As nombre_marca','s.nombre As nombre_subcategoria subcategoria')
+    ->get();
+
+  
+
+    return view('formularios.inventarioarticulos',compact('articulo','user'));
+
+}
+public function agregainventario($id, Request $datos){
+
+   $articulo=DB::table('articulos')
+   ->select('existencia')
+   ->where('id','=', $id)
+   ->first();
+
+  
+
+  $existencia=$datos->input('existencia');
+   
+  $valor=$articulo->existencia+$existencia; 
+  
+
+  DB::table('articulos')
+            ->where('id', $id)
+            ->update(['existencia' => $valor]);
+
+      return Redirect('/consultainventario');
+}
 
  
 }

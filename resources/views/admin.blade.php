@@ -136,13 +136,17 @@
               <li class="active"><a href="{{url("/marcas")}}"><i class="fa fa-circle-o"></i>Agregar Marca</a></li>
               <li class="active"><a href="{{url("/altausuarios")}}"><i class="fa fa-circle-o"></i>Agregar Usuario</a></li>
               </ul>
+              </li>
+              <li class="active treeview">
               <a href="">
                 <i class="fa fa-dashboard"></i> <span>Importaciones</span><i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
               <li class="active"><a href="{{url("/excel")}}"><i class="fa fa-circle-o"></i>Importar Articulos</a></li>
                 
-              </ul>  
+              </ul>
+              </li>
+              <li class="active treeview">  
               <a href="">
                 <i class="fa fa-dashboard"></i> <span>Listados</span><i class="fa fa-angle-left pull-right"></i>
               </a>
@@ -150,8 +154,8 @@
               <li class="active"><a href="{{url("/consultausuario")}}"><i class="fa fa-circle-o"></i>Listado Usuarios</a></li>
                 
               </ul>  
-              
-            </li>
+              </li>
+            
 
   
            
