@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Categoria;
 use App\Marca;
 use App\Subcategoria;
+use DB;
 use Auth;
 
 class FormulariosController extends Controller
@@ -69,4 +70,37 @@ class FormulariosController extends Controller
 		$user = Auth::user();
 		return view('formularios.altausuarios',compact('user'));
 	}
+
+public function index(){
+
+$iduser = Auth::user()->id;
+
+
+$countcarrito = DB::table('ordenes')
+ ->where('estatus','=','0')
+ ->where('id_cliente','=', $iduser)
+ ->count();
+
+ 
+
+$articuloscar=DB::table('ordenes As o')
+->join('articulos As a','a.id','=','o.id')
+->where('o.estatus','=','0')
+->where('o.id_cliente','=', $iduser)
+->get();
+
+$total = DB::table('ordenes As o')
+->join('articulos As a','a.id','=','o.id')
+->where('o.estatus','=','0')
+->where('o.id_cliente','=', $iduser)
+->select(DB::raw('sum(a.precio-(a.precio*a.promo)) as todo'))
+->get();
+
+
+
+
+	return view('index',compact('countcarrito','articuloscar','total'));
+}
+
+	
 }

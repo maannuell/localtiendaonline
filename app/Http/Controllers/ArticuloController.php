@@ -61,7 +61,34 @@ public function ver($id){
   ->select('id','nombre','descripcion','precio','imagen','existencia','promo')
   ->where('id_subcategoria','=',$id)
   ->paginate(3);
-   return view('productos',compact('articulo'));
+
+
+$iduser = Auth::user()->id;
+
+
+$countcarrito = DB::table('ordenes')
+ ->where('estatus','=','0')
+ ->where('id_cliente','=', $iduser)
+ ->count();
+
+ 
+
+$articuloscar=DB::table('ordenes As o')
+->join('articulos As a','a.id','=','o.id')
+->where('o.estatus','=','0')
+->where('o.id_cliente','=', $iduser)
+->get();
+
+$total = DB::table('ordenes As o')
+->join('articulos As a','a.id','=','o.id')
+->where('o.estatus','=','0')
+->where('o.id_cliente','=', $iduser)
+->select(DB::raw('sum(a.precio-(a.precio*a.promo)) as todo'))
+->get();
+
+
+
+   return view('productos',compact('articulo','countcarrito','articuloscar','total'));
 
 }
 
@@ -81,8 +108,33 @@ public function detaver($id){
   ->select('id','nombre','descripcion','precio','imagen','existencia','promo')
   ->where('id','=',$id)
   ->first();
+
+
+  $iduser = Auth::user()->id;
+
+
+$countcarrito = DB::table('ordenes')
+ ->where('estatus','=','0')
+ ->where('id_cliente','=', $iduser)
+ ->count();
+
+ 
+
+$articuloscar=DB::table('ordenes As o')
+->join('articulos As a','a.id','=','o.id')
+->where('o.estatus','=','0')
+->where('o.id_cliente','=', $iduser)
+->get();
+
+$total = DB::table('ordenes As o')
+->join('articulos As a','a.id','=','o.id')
+->where('o.estatus','=','0')
+->where('o.id_cliente','=', $iduser)
+->select(DB::raw('sum(a.precio-(a.precio*a.promo)) as todo'))
+->get();
+
    
-   return view('prodetalle',compact('articulo','comentario','count'));
+   return view('prodetalle',compact('articulo','comentario','count','countcarrito','articuloscar','total'));
 
 }
 

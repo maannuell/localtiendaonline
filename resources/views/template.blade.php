@@ -165,42 +165,51 @@
               </div>
               <!-- / logo  -->
                <!-- cart box -->
+              
               <div class="aa-cartbox">
                 <a class="aa-cart-link" href="#">
                   <span class="fa fa-shopping-cart"></span>
                   <span class="aa-cart-title">Carrito</span>
-                  <span class="aa-cart-notify">2</span>
+                   <span class="aa-cart-notify">{{$countcarrito}}</span>
                 </a>
-                <div class="aa-cartbox-summary">
+               @if($countcarrito>0)
+<div class="aa-cartbox-summary">
                   <ul>
+                  @foreach($articuloscar as $a)
                     <li>
-                      <a class="aa-cartbox-img" href="#"><img src="#" alt="img"></a>
+                      <a class="aa-cartbox-img" href="#"><img src="{{asset("imgart/$a->imagen")}}" alt="img"></a>
                       <div class="aa-cartbox-info">
-                        <h4><a href="#">Product Name</a></h4>
-                        <p>1 x $250</p>
+                        <h4><a href="#">{{$a->nombre}}</a></h4>
+                        <p>${{number_format($a->precio-($a->precio*$a->promo), 2, '.', ',' )}}</p>
+
                       </div>
                       <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
                     </li>
-                    <li>
-                      <a class="aa-cartbox-img" href="#"><img src="#" alt="img"></a>
-                      <div class="aa-cartbox-info">
-                        <h4><a href="#">Product Name</a></h4>
-                        <p>1 x $250</p>
-                      </div>
-                      <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
-                    </li>                    
+                       @endforeach
+                       @foreach($total as $t)
                     <li>
                       <span class="aa-cartbox-total-title">
                         Total
                       </span>
                       <span class="aa-cartbox-total-price">
-                        $500
+                       ${{number_format($t->todo, 2, '.', '.' )}}
                       </span>
                     </li>
+
                   </ul>
-                  <a class="aa-cartbox-checkout aa-primary-btn" href="checkout.html">Checkout</a>
+                  <a class="aa-cartbox-checkout aa-primary-btn" href="checkout.html">Comprar</a>
+                 @endforeach
                 </div>
+  @else
+
+  @endif
               </div>
+            
+             
+
+ 
+
+
               <!-- / cart box -->
               <!-- search box -->
               <div class="aa-search-box">

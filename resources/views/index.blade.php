@@ -2,6 +2,11 @@
 
 
 
+ 
+
+               
+
+
     @section('contenido')
    
     <!-- Start slider -->
