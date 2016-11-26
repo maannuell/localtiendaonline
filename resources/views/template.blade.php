@@ -190,7 +190,7 @@
                         <p>${{number_format($a->precio-($a->precio*$a->promo), 2, '.', ',' )}}</p>
 
                       </div>
-                      <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
+                      <a class="aa-remove-product" href="{{url("/eliminarcarrito")}}/{{$a->id_orden}}"><span class="fa fa-times"></span></a>
                     </li>
                        @endforeach
                        @foreach($total as $t)

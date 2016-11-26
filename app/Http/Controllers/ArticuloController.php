@@ -8,6 +8,7 @@ use App\Subcategoria;
 use DB;
 use App\Comentario;
 use Auth;
+use App\Ordene;
 
 class ArticuloController extends Controller
 {
@@ -76,13 +77,14 @@ $countcarrito = DB::table('ordenes')
  
 
 $articuloscar=DB::table('ordenes As o')
-->join('articulos As a','a.id','=','o.id')
+->join('articulos As a','a.id','=','o.id_articulo')
 ->where('o.estatus','=','0')
 ->where('o.id_cliente','=', $iduser)
+->select('a.*','o.id As id_orden','o.estatus','o.id_cliente')
 ->get();
 
 $total = DB::table('ordenes As o')
-->join('articulos As a','a.id','=','o.id')
+->join('articulos As a','a.id','=','o.id_articulo')
 ->where('o.estatus','=','0')
 ->where('o.id_cliente','=', $iduser)
 ->select(DB::raw('sum(a.precio-(a.precio*a.promo)) as todo'))
@@ -128,13 +130,14 @@ if (Auth::guest()){
  
 
 $articuloscar=DB::table('ordenes As o')
-->join('articulos As a','a.id','=','o.id')
+->join('articulos As a','a.id','=','o.id_articulo')
 ->where('o.estatus','=','0')
 ->where('o.id_cliente','=', $iduser)
+->select('a.*','o.id As id_orden','o.estatus','o.id_cliente')
 ->get();
 
 $total = DB::table('ordenes As o')
-->join('articulos As a','a.id','=','o.id')
+->join('articulos As a','a.id','=','o.id_articulo')
 ->where('o.estatus','=','0')
 ->where('o.id_cliente','=', $iduser)
 ->select(DB::raw('sum(a.precio-(a.precio*a.promo)) as todo'))
@@ -198,6 +201,69 @@ public function agregainventario($id, Request $datos){
 
       return Redirect('/consultainventario');
 }
+
+public function carritocompras($id){
+
+$idcategoria=DB::table('articulos')
+->select('id_subcategoria')
+->where('id','=', $id)
+->first();
+
+
+
+
+if (Auth::guest()){
+  return Redirect('/registrarse');
+
+} else {
+
+$date=date('Y-m-n');
+
+
+$iduser = Auth::user()->id;
+
+
+  $nuevo= new Ordene();
+  $nuevo->id_articulo=$id;
+  $nuevo->id_cliente=$iduser;
+  $nuevo->fecha=$date;
+  $nuevo->estatus=0;
+  $nuevo->save();
+   
+   return Redirect('/verproductos/'.$idcategoria->id_subcategoria);
+   
+}
+
+
+}
+
+public function acarritodetalle($id){
+if (Auth::guest()){
+  return Redirect('/registrarse');
+
+} else {
+
+$date=date('Y-m-n');
+
+
+$iduser = Auth::user()->id;
+
+
+  $nuevo= new Ordene();
+  $nuevo->id_articulo=$id;
+  $nuevo->id_cliente=$iduser;
+  $nuevo->fecha=$date;
+  $nuevo->estatus=0;
+  $nuevo->save();
+   
+   return Redirect('/detaproducto/'.$id);
+   
+}
+
+
+}
+
+
 
  
 }

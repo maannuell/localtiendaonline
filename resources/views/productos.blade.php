@@ -42,7 +42,7 @@
                 <li>
                   <figure>
                     <a class="aa-product-img" href="{{url("/detaproducto")}}/{{$a->id}}"><img src="{{asset("imgart/$a->imagen")}}" width="280" height="300" alt="polo shirt img"></a>
-                    <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                    <a class="aa-add-card-btn" href="{{url("/agregarcarrito")}}/{{$a->id}}"><span class="fa fa-shopping-cart"></span>Agregar a Carrito</a>
                     <figcaption>
                       <h4 class="aa-product-title"><a href="#">{{$a->nombre}}</a></h4>
                       @if($a->promo>0)

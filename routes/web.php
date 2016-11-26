@@ -56,3 +56,10 @@ Route::get('/eliminarcomentario/{id}','ComentarioController@eliminar');
 Route::get('/consultainventario','ArticuloController@coninventario');
 //agregar inventario
 Route::post('/agregarinventario/{id}','ArticuloController@agregainventario');
+
+//carrito 
+Route::get('/agregarcarrito/{id}','ArticuloController@carritocompras');
+//en detalle
+Route::get('/agregarcarrdetalle/{id}','ArticuloController@acarritodetalle');
+//borrar del carrito
+Route::get('/eliminarcarrito/{id}','OrdenesController@eliminarcompra');

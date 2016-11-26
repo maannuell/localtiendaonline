@@ -84,13 +84,17 @@ $countcarrito = DB::table('ordenes')
  
 
 $articuloscar=DB::table('ordenes As o')
-->join('articulos As a','a.id','=','o.id')
+->join('articulos As a','a.id','=','o.id_articulo')
 ->where('o.estatus','=','0')
 ->where('o.id_cliente','=', $iduser)
+->select('a.*','o.id As id_orden','o.estatus','o.id_cliente')
 ->get();
 
+
+
+
 $total = DB::table('ordenes As o')
-->join('articulos As a','a.id','=','o.id')
+->join('articulos As a','a.id','=','o.id_articulo')
 ->where('o.estatus','=','0')
 ->where('o.id_cliente','=', $iduser)
 ->select(DB::raw('sum(a.precio-(a.precio*a.promo)) as todo'))
