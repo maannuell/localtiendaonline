@@ -62,7 +62,9 @@ public function ver($id){
   ->where('id_subcategoria','=',$id)
   ->paginate(3);
 
-
+ if (Auth::guest()){
+  return view('productos',compact('articulo'));
+ }else{
 $iduser = Auth::user()->id;
 
 
@@ -90,6 +92,8 @@ $total = DB::table('ordenes As o')
 
    return view('productos',compact('articulo','countcarrito','articuloscar','total'));
 
+ }
+
 }
 
 public function detaver($id){
@@ -109,11 +113,14 @@ public function detaver($id){
   ->where('id','=',$id)
   ->first();
 
+if (Auth::guest()){
+
+ return view('prodetalle',compact('articulo','comentario','count'));
+}else{
 
   $iduser = Auth::user()->id;
 
-
-$countcarrito = DB::table('ordenes')
+  $countcarrito = DB::table('ordenes')
  ->where('estatus','=','0')
  ->where('id_cliente','=', $iduser)
  ->count();
@@ -135,6 +142,10 @@ $total = DB::table('ordenes As o')
 
    
    return view('prodetalle',compact('articulo','comentario','count','countcarrito','articuloscar','total'));
+}
+
+
+
 
 }
 
