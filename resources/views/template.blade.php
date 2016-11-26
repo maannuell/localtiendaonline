@@ -165,7 +165,14 @@
               </div>
               <!-- / logo  -->
                <!-- cart box -->
-              
+                @if (Auth::guest())
+                           <div class="aa-cartbox">
+                             <a class="aa-cart-link" href="#">
+                  <span class="fa fa-shopping-cart"></span>
+                  <span class="aa-cart-title">Carrito</span>
+                   <span class="aa-cart-notify">0</span>
+                </a>
+                        @else 
               <div class="aa-cartbox">
                 <a class="aa-cart-link" href="#">
                   <span class="fa fa-shopping-cart"></span>
@@ -202,6 +209,7 @@
                 </div>
   @else
 
+  @endif
   @endif
               </div>
             
