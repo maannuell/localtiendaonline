@@ -12,7 +12,11 @@
 */
 
 Route::get('/','FormulariosController@index');     
+<<<<<<< HEAD
 Route::get('/ircarrito','FormulariosController@ircar');
+=======
+
+>>>>>>> origin/master
 
 //registrarse
 Route::get('/registrarse','RegistrousuariosController@register');

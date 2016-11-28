@@ -108,6 +108,7 @@ $total = DB::table('ordenes As o')
 	return view('index',compact('countcarrito','articuloscar','total'));
 }
 
+<<<<<<< HEAD
 
 public function ircar(){
 
@@ -145,5 +146,7 @@ $total = DB::table('ordenes As o')
 		return view('carrito',compact('countcarrito','articuloscar','total'));
 	}
 	}
+=======
+>>>>>>> origin/master
 	
 }

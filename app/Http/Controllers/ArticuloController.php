@@ -217,6 +217,7 @@ if (Auth::guest()){
 
 } else {
 
+<<<<<<< HEAD
 
 $iduser = Auth::user()->id;
 $countexiste = DB::table('ordenes')
@@ -237,6 +238,12 @@ $countexiste = DB::table('ordenes')
 $date=date('Y-m-n');
 
 
+=======
+$date=date('Y-m-n');
+
+
+$iduser = Auth::user()->id;
+>>>>>>> origin/master
 
 
   $nuevo= new Ordene();
@@ -247,7 +254,11 @@ $date=date('Y-m-n');
   $nuevo->save();
    
    return Redirect('/verproductos/'.$idcategoria->id_subcategoria);
+<<<<<<< HEAD
 }   
+=======
+   
+>>>>>>> origin/master
 }
 
 
@@ -259,6 +270,7 @@ if (Auth::guest()){
 
 } else {
 
+<<<<<<< HEAD
 
 
 $iduser = Auth::user()->id;
@@ -279,6 +291,12 @@ $date=date('Y-m-n');
 
 
 
+=======
+$date=date('Y-m-n');
+
+
+$iduser = Auth::user()->id;
+>>>>>>> origin/master
 
 
   $nuevo= new Ordene();
@@ -289,7 +307,11 @@ $date=date('Y-m-n');
   $nuevo->save();
    
    return Redirect('/detaproducto/'.$id);
+<<<<<<< HEAD
     } 
+=======
+   
+>>>>>>> origin/master
 }
 
 
