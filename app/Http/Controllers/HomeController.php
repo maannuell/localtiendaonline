@@ -23,6 +23,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $countcarrito = DB::table('ordenes')
+ ->where('estatus','=','0')
+ ->where('id_cliente','=', $iduser)
+ ->count();
+
+
+        return view('index',compact('countcarrito'));
     }
 }

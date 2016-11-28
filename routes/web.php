@@ -11,12 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/','FormulariosController@index');     
+Route::get('/ircarrito','FormulariosController@ircar');
+
+//registrarse
+Route::get('/registrarse','RegistrousuariosController@register');
+Route::post('/guardarusuario','RegistrousuariosController@guardar');
+Route::get('/consultausuario','RegistrousuariosController@consultar');
+
 
 Route::get('/administrador','FormulariosController@admi');
-//mostrar vistas 
+//mostrar vistas
+Route::get('/altausuarios','FormulariosController@usuarios'); 
 Route::get('/categorias', 'FormulariosController@categorias');
 Route::get('/subcategorias', 'FormulariosController@subcategorias');
 Route::get('/articulos', 'FormulariosController@articulos');
@@ -46,3 +52,14 @@ Route::get('/excel', 'FormulariosController@excel');
 //consultas admin 
 Route::get('/consultacomentario','ComentarioController@consultar');
 Route::get('/eliminarcomentario/{id}','ComentarioController@eliminar');
+//vista inventario
+Route::get('/consultainventario','ArticuloController@coninventario');
+//agregar inventario
+Route::post('/agregarinventario/{id}','ArticuloController@agregainventario');
+
+//carrito 
+Route::get('/agregarcarrito/{id}','ArticuloController@carritocompras');
+//en detalle
+Route::get('/agregarcarrdetalle/{id}','ArticuloController@acarritodetalle');
+//borrar del carrito
+Route::get('/eliminarcarrito/{id}','OrdenesController@eliminarcompra');

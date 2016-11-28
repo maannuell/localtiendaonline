@@ -42,7 +42,7 @@
                 <li>
                   <figure>
                     <a class="aa-product-img" href="{{url("/detaproducto")}}/{{$a->id}}"><img src="{{asset("imgart/$a->imagen")}}" width="280" height="300" alt="polo shirt img"></a>
-                    <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                    <a class="aa-add-card-btn" href="{{url("/agregarcarrito")}}/{{$a->id}}"><span class="fa fa-shopping-cart"></span>Agregar a Carrito</a>
                     <figcaption>
                       <h4 class="aa-product-title"><a href="#">{{$a->nombre}}</a></h4>
                       @if($a->promo>0)
@@ -58,7 +58,7 @@
 
                     <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
                     <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a>
-                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>                            
+                    <a name="prueba" href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>                            
                   
                   </div>
                   <!-- product badge -->
@@ -246,6 +246,11 @@
     </div>
   </section>
   <!-- / product category -->
+
+
+
+
+
   @stop
 
 

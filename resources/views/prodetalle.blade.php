@@ -45,7 +45,7 @@
                       
                     </div>
                     <div class="aa-prod-view-bottom">
-                      <a class="aa-add-to-cart-btn" href="#">Añadir Al carrito</a>
+                      <a class="aa-add-to-cart-btn" href="{{url("/agregarcarrdetalle")}}/{{$articulo->id}}">Añadir Al carrito</a>
                      
                     </div>
                   </div>

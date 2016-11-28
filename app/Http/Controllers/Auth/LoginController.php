@@ -38,6 +38,6 @@ class LoginController extends Controller
     }
 
     public function redirectpath(){
-        return auth()->user()->id==1 ? '/administrador' : '/';
+        return auth()->user()->rol==1 ? '/administrador' : '/';
     }
 }

@@ -28,7 +28,7 @@
     <!-- Google Font -->
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-    
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -42,7 +42,7 @@
    <!-- wpf loader Two -->
     <div id="wpf-loader-two">          
       <div class="wpf-loader-two-inner">
-        <span>Loading</span>
+        <span>Cargando</span>
       </div>
     </div> 
     <!-- / wpf loader Two -->       
@@ -99,9 +99,9 @@
                 <ul class="aa-head-top-nav-right">
                  @if (Auth::guest())
                             <li><a href="" data-toggle="modal" data-target="#login-modal">Iniciar</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
+                            <li><a href="{{ url('/registrarse') }}">Registrarse</a></li>
                         @else 
-                        @if (Auth::user()->id==1)
+                        @if (Auth::user()->rol==1)
                    <li class="hidden-xs"><a href="{{url("/administrador")}}">Admin</a></li>
                    @else 
                   
@@ -116,7 +116,7 @@
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            Salir
                                         </a>
 
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
@@ -134,7 +134,7 @@
                   </li>
                   @endif
                   <li class="hidden-xs"><a href="wishlist.html">Deseos</a></li>
-                  <li class="hidden-xs"><a href="cart.html">Mi Carrito</a></li>
+                  <li class="hidden-xs"><a href="{{url("/ircarrito")}}">Mi Carrito</a></li>
                   <li class="hidden-xs"><a href="checkout.html">Revision</a></li>
                 
 
@@ -156,7 +156,7 @@
               <!-- logo  -->
               <div class="aa-logo">
                 <!-- Text based logo -->
-                <a href="index.html">
+                <a href="{{url("/")}}">
                   <span class="fa fa-shopping-cart"></span>
                   <p>Triple<strong>"B"</strong> <span>Su Comercializadora</span></p>
                 </a>
@@ -165,42 +165,59 @@
               </div>
               <!-- / logo  -->
                <!-- cart box -->
+                @if (Auth::guest())
+                           <div class="aa-cartbox">
+                             <a class="aa-cart-link" href="#">
+                  <span class="fa fa-shopping-cart"></span>
+                  <span class="aa-cart-title">Carrito</span>
+                   <span class="aa-cart-notify">0</span>
+                </a>
+                        @else 
               <div class="aa-cartbox">
                 <a class="aa-cart-link" href="#">
                   <span class="fa fa-shopping-cart"></span>
                   <span class="aa-cart-title">Carrito</span>
-                  <span class="aa-cart-notify">2</span>
+                   <span class="aa-cart-notify">{{$countcarrito}}</span>
                 </a>
-                <div class="aa-cartbox-summary">
+               @if($countcarrito>0)
+<div class="aa-cartbox-summary">
                   <ul>
+                  @foreach($articuloscar as $a)
                     <li>
-                      <a class="aa-cartbox-img" href="#"><img src="#" alt="img"></a>
+                      <a class="aa-cartbox-img" href="#"><img src="{{asset("imgart/$a->imagen")}}" alt="img"></a>
                       <div class="aa-cartbox-info">
-                        <h4><a href="#">Product Name</a></h4>
-                        <p>1 x $250</p>
+                        <h4><a href="#">{{$a->nombre}}</a></h4>
+                        <p>${{number_format($a->precio-($a->precio*$a->promo), 2, '.', ',' )}}</p>
+
                       </div>
-                      <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
+                      <a class="aa-remove-product" href="{{url("/eliminarcarrito")}}/{{$a->id_orden}}"><span class="fa fa-times"></span></a>
                     </li>
-                    <li>
-                      <a class="aa-cartbox-img" href="#"><img src="#" alt="img"></a>
-                      <div class="aa-cartbox-info">
-                        <h4><a href="#">Product Name</a></h4>
-                        <p>1 x $250</p>
-                      </div>
-                      <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
-                    </li>                    
+                       @endforeach
+                       @foreach($total as $t)
                     <li>
                       <span class="aa-cartbox-total-title">
                         Total
                       </span>
                       <span class="aa-cartbox-total-price">
-                        $500
+                       ${{number_format($t->todo, 2, '.', '.' )}}
                       </span>
                     </li>
+
                   </ul>
-                  <a class="aa-cartbox-checkout aa-primary-btn" href="checkout.html">Checkout</a>
+                  <a class="aa-cartbox-checkout aa-primary-btn" href="checkout.html">Comprar</a>
+                 @endforeach
                 </div>
+  @else
+
+  @endif
+  @endif
               </div>
+            
+             
+
+ 
+
+
               <!-- / cart box -->
               <!-- search box -->
               <div class="aa-search-box">
@@ -638,7 +655,7 @@
            {{ csrf_field() }}
             <div>
             <label for="">Usuario O Email<span>*</span></label>
-            <input  id="email" type="email" name="email" value="{{old('email')}}"  placeholder="Usuario o Email" required>
+            <input  id="email" type="text" name="email" value="{{old('email')}}"  placeholder="Usuario o Email" required>
             @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
