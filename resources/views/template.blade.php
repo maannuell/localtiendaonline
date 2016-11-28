@@ -511,17 +511,17 @@
         <div class="col-md-12">
           <div class="aa-client-brand-area">
             <ul class="aa-client-brand-slider">
-              <li><a href="#"><img src="{{asset("img/cisco.jpg")}}" alt="cisco img" ></a></li>
-              <li><a href="#"><img src="{{asset("img/HP.jpg")}}" alt="hp img"></a></li>
-              <li><a href="#"><img src="{{asset("img/kingston.png")}}" alt="kingston img"></a></li>
-              <li><a href="#"><img src="{{asset("img/lg.jpg")}}" alt="lg img"></a></li>
-              <li><a href="#"><img src="{{asset("img/samsung.jpg")}}" alt="samsung img"></a></li>
-              <li><a href="#"><img src="{{asset("img/adata.png")}}" alt="adata img"></a></li>
-              <li><a href="#"><img src="{{asset("img/asus.png")}}" alt="asus img" height="60"></a></li>
-              <li><a href="#"><img src="{{asset("img/dell2.png")}}" alt="dell img"  height="60"></a></li>
-              <li><a href="#"><img src="{{asset("img/TP-LINK.jpg")}}" alt="TP-LINK img" height="60"></a></li>
-              <li><a href="#"><img src="{{asset("img/sony.png")}}" alt="sony img" height="60"></a></li>
-              <li><a href="#"><img src="{{asset("img/vorago.jpg")}}" alt="vorago img" height="60"></a></li>
+              <li><a href="{{url("/productosxmarca")}}/{{4}}"><img src="{{asset("img/cisco.jpg")}}" alt="cisco img" ></a></li>
+              <li><a href="{{url("/productosxmarca")}}/{{1}}"><img src="{{asset("img/HP.jpg")}}" alt="hp img"></a></li>
+              <li><a href="{{url("/productosxmarca")}}/{{5}}"><img src="{{asset("img/kingston.png")}}" alt="kingston img"></a></li>
+              <li><a href="{{url("/productosxmarca")}}/{{6}}"><img src="{{asset("img/lg.jpg")}}" alt="lg img"></a></li>
+              <li><a href="{{url("/productosxmarca")}}/{{7}}"><img src="{{asset("img/samsung.jpg")}}" alt="samsung img"></a></li>
+              <li><a href="{{url("/productosxmarca")}}/{{8}}"><img src="{{asset("img/adata.png")}}" alt="adata img"></a></li>
+              <li><a href="{{url("/productosxmarca")}}/{{9}}"><img src="{{asset("img/asus.png")}}" alt="asus img" height="60"></a></li>
+              <li><a href="{{url("/productosxmarca")}}/{{2}}"><img src="{{asset("img/dell2.png")}}" alt="dell img"  height="60"></a></li>
+              <li><a href="{{url("/productosxmarca")}}/{{10}}"><img src="{{asset("img/TP-LINK.jpg")}}" alt="TP-LINK img" height="60"></a></li>
+              <li><a href="{{url("/productosxmarca")}}/{{11}}"><img src="{{asset("img/sony.png")}}" alt="sony img" height="60"></a></li>
+              <li><a href="{{url("/productosxmarca")}}/{{12}}"><img src="{{asset("img/vorago.jpg")}}" alt="vorago img" height="60"></a></li>
             </ul>
           </div>
         </div>

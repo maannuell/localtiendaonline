@@ -97,6 +97,48 @@ $total = DB::table('ordenes As o')
  }
 
 }
+public function vermarca($idmarca){
+
+
+  $articulo=DB::table('articulos')
+  ->select('id','nombre','descripcion','precio','imagen','existencia','promo')
+  ->where('id_marca','=',$idmarca)
+  ->paginate(3);
+
+ if (Auth::guest()){
+  return view('productos',compact('articulo'));
+ }else{
+$iduser = Auth::user()->id;
+
+
+$countcarrito = DB::table('ordenes')
+ ->where('estatus','=','0')
+ ->where('id_cliente','=', $iduser)
+ ->count();
+
+ 
+
+$articuloscar=DB::table('ordenes As o')
+->join('articulos As a','a.id','=','o.id_articulo')
+->where('o.estatus','=','0')
+->where('o.id_cliente','=', $iduser)
+->select('a.*','o.id As id_orden','o.estatus','o.id_cliente')
+->get();
+
+$total = DB::table('ordenes As o')
+->join('articulos As a','a.id','=','o.id_articulo')
+->where('o.estatus','=','0')
+->where('o.id_cliente','=', $iduser)
+->select(DB::raw('sum(a.precio-(a.precio*a.promo)) as todo'))
+->get();
+
+
+
+   return view('productos',compact('articulo','countcarrito','articuloscar','total'));
+
+ }
+  
+}
 
 public function detaver($id){
    
@@ -217,7 +259,6 @@ if (Auth::guest()){
 
 } else {
 
-<<<<<<< HEAD
 
 $iduser = Auth::user()->id;
 $countexiste = DB::table('ordenes')
@@ -238,12 +279,6 @@ $countexiste = DB::table('ordenes')
 $date=date('Y-m-n');
 
 
-=======
-$date=date('Y-m-n');
-
-
-$iduser = Auth::user()->id;
->>>>>>> origin/master
 
 
   $nuevo= new Ordene();
@@ -254,11 +289,7 @@ $iduser = Auth::user()->id;
   $nuevo->save();
    
    return Redirect('/verproductos/'.$idcategoria->id_subcategoria);
-<<<<<<< HEAD
 }   
-=======
-   
->>>>>>> origin/master
 }
 
 
@@ -270,7 +301,6 @@ if (Auth::guest()){
 
 } else {
 
-<<<<<<< HEAD
 
 
 $iduser = Auth::user()->id;
@@ -291,12 +321,6 @@ $date=date('Y-m-n');
 
 
 
-=======
-$date=date('Y-m-n');
-
-
-$iduser = Auth::user()->id;
->>>>>>> origin/master
 
 
   $nuevo= new Ordene();
@@ -307,11 +331,7 @@ $iduser = Auth::user()->id;
   $nuevo->save();
    
    return Redirect('/detaproducto/'.$id);
-<<<<<<< HEAD
     } 
-=======
-   
->>>>>>> origin/master
 }
 
 

@@ -12,11 +12,7 @@
 */
 
 Route::get('/','FormulariosController@index');     
-<<<<<<< HEAD
 Route::get('/ircarrito','FormulariosController@ircar');
-=======
-
->>>>>>> origin/master
 
 //registrarse
 Route::get('/registrarse','RegistrousuariosController@register');
@@ -41,7 +37,7 @@ Route::post('/guardarArticulo','ArticuloController@guardar');
 
 Route::get('/verproductos/{id}','ArticuloController@ver');
 Route::get('/detaproducto/{id}','ArticuloController@detaver');
-
+Route::get('/productosxmarca/{id}','ArticuloController@vermarca');
 Route::get('/sele/{id}','ArticuloController@drop');
 
 Auth::routes();
