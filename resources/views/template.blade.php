@@ -701,6 +701,17 @@
   <script type="text/javascript" src="{{asset("js/nouislider.js")}}"></script>
   <!-- Custom js -->
   <script src="{{asset("js/custom.js")}}"></script> 
+  <script type="text/javascript" src="{{asset("js/sistema.js")}}" ></script>
+
+ 
+  <!--angular-->
+     <script src="{{ asset("app/lib/angular/angular.js")}}"></script>
+        
+        
+        <!-- AngularJS Application Scripts -->
+        <script src="{{asset("app/app.js")}}"></script>
+        <script src="{{asset("app/controllers/employees.js")}}"></script>
+
 
   </body>
 </html>

@@ -5,7 +5,7 @@
     @section('contenido')
 
   <!-- product category -->
-  <section id="aa-product-category">
+  <section id="aa-product-category" ng-controller="ProductoController" ng-app="productosmodulo">
     <div class="container">
       <div class="row">
         <div class="col-lg-9 col-md-9 col-sm-8 col-md-push-3">
@@ -58,7 +58,7 @@
 
                     <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
                     <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a>
-                    <a name="prueba" href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>                            
+                    <a name="prueba"  data-toggle2="tooltip" data-placement="top" title="Quick View" ><span class="fa fa-search" ng-click="toggle('add', {{$a->id}})"></span></a>                               
                   
                   </div>
                   <!-- product badge -->
@@ -77,29 +77,12 @@
                             <div class="simpleLens-gallery-container" id="demo-1">
                               <div class="simpleLens-container">
                                   <div class="simpleLens-big-image-container">
-                                      <a class="simpleLens-lens-image" data-lens-image="img/view-slider/large/polo-shirt-1.png">
-                                          <img src="img/view-slider/medium/polo-shirt-1.png" class="simpleLens-big-image">
+                                      <a>
+                                          <img id="imagen" src="{{asset("imgart/<% imagen %>")}}" class="simpleLens-big-image">
                                       </a>
                                   </div>
                               </div>
-                              <div class="simpleLens-thumbnails-container">
-                                  <a href="#" class="simpleLens-thumbnail-wrapper"
-                                     data-lens-image="img/view-slider/large/polo-shirt-1.png"
-                                     data-big-image="img/view-slider/medium/polo-shirt-1.png">
-                                      <img src="img/view-slider/thumbnail/polo-shirt-1.png">
-                                  </a>                                    
-                                  <a href="#" class="simpleLens-thumbnail-wrapper"
-                                     data-lens-image="img/view-slider/large/polo-shirt-3.png"
-                                     data-big-image="img/view-slider/medium/polo-shirt-3.png">
-                                      <img src="img/view-slider/thumbnail/polo-shirt-3.png">
-                                  </a>
-
-                                  <a href="#" class="simpleLens-thumbnail-wrapper"
-                                     data-lens-image="img/view-slider/large/polo-shirt-4.png"
-                                     data-big-image="img/view-slider/medium/polo-shirt-4.png">
-                                      <img src="img/view-slider/thumbnail/polo-shirt-4.png">
-                                  </a>
-                              </div>
+                            
                             </div>
                           </div>
                         </div>
@@ -107,37 +90,23 @@
                       
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <div class="aa-product-view-content">
-                            <h3>T-Shirt</h3>
+                            <h4><% nombre %></h4>
                             <div class="aa-price-block">
-                              <span class="aa-product-view-price">{{$a->precio}}</span>
-                              <p class="aa-product-avilability">Avilability: <span>{{$a->existencia}}</span></p>
+                              <div id="precio" class="aa-product-view-price">$ <% precio %> </div>
+                              <p class="aa-product-avilability">Existencia: <span id="existencia"> <% existencia %> </span></p>
                             </div>
-                            <p>{{$a->descripcion}}</p>
-                            <h4>Size</h4>
-                            <div class="aa-prod-view-size">
-                              <a href="#">S</a>
-                              <a href="#">M</a>
-                              <a href="#">L</a>
-                              <a href="#">XL</a>
-                            </div>
+                            <p></p>
+                           
                             <div class="aa-prod-quantity">
-                              <form action="">
-                                <select name="" id="">
-                                  <option value="0" selected="1">1</option>
-                                  <option value="1">2</option>
-                                  <option value="2">3</option>
-                                  <option value="3">4</option>
-                                  <option value="4">5</option>
-                                  <option value="5">6</option>
-                                </select>
-                              </form>
+                              <h4> <% descripcion %> </h4>
                               <p class="aa-prod-category">
-                                Category: <a href="#">Polo T-Shirt</a>
-                              </p>
+                               
                             </div>
                             <div class="aa-prod-view-bottom">
-                              <a href="#" class="aa-add-to-cart-btn"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
-                              <a href="#" class="aa-add-to-cart-btn">View Details</a>
+                              <a href="{{url("/agregarcarrdetalle")}}/<% nuevo %>" class="aa-add-to-cart-btn"><span class="fa fa-shopping-cart"></span>A Carrito</a>
+                              <a id="irdetalle" href="{{url("/detaproducto")}}/<% nuevo %>" class="aa-add-to-cart-btn">Ver detalle</a>
+
+
                             </div>
                           </div>
                         </div>

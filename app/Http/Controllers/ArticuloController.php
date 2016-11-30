@@ -97,6 +97,8 @@ $total = DB::table('ordenes As o')
  }
 
 }
+
+
 public function vermarca($idmarca){
 
 
@@ -335,6 +337,13 @@ $date=date('Y-m-n');
 }
 
 
+}
+
+public function modales($id ){
+  
+
+
+  return Articulo::find($id);
 }
 
 

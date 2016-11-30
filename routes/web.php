@@ -37,6 +37,9 @@ Route::post('/guardarArticulo','ArticuloController@guardar');
 
 Route::get('/verproductos/{id}','ArticuloController@ver');
 Route::get('/detaproducto/{id}','ArticuloController@detaver');
+
+
+
 Route::get('/productosxmarca/{id}','ArticuloController@vermarca');
 Route::get('/sele/{id}','ArticuloController@drop');
 
@@ -63,3 +66,5 @@ Route::get('/agregarcarrito/{id}','ArticuloController@carritocompras');
 Route::get('/agregarcarrdetalle/{id}','ArticuloController@acarritodetalle');
 //borrar del carrito
 Route::get('/eliminarcarrito/{id}','OrdenesController@eliminarcompra');
+
+Route::get('/api/v1/modal/{id}', 'ArticuloController@modales');
