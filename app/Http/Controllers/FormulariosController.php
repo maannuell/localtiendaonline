@@ -103,9 +103,20 @@ $total = DB::table('ordenes As o')
 ->get();
 
 
+$artdescuento=DB::table('articulos')
+->orderBy('promo', 'desc')
+->limit(3)
+->get();
+
+$artvisitas=DB::table('articulos')
+->orderBy('visitas', 'desc')
+->limit(3)
+->get();
 
 
-	return view('index',compact('countcarrito','articuloscar','total'));
+
+
+	return view('index',compact('countcarrito','articuloscar','total','artdescuento','artvisitas'));
 }
 
 

@@ -144,8 +144,22 @@ $total = DB::table('ordenes As o')
 
 public function detaver($id){
    
+   $visitasactual=DB::table('articulos')
+   ->where('id','=', $id)
+   ->select('visitas')
+   ->first();
+
+   
+   $visitastotal=$visitasactual->visitas+1; 
+
+  DB::table('articulos')
+            ->where('id', $id)
+            ->update(['visitas' => $visitastotal]);
+
+
    $count=DB::table('comentarios')->where('id_articulo','=', $id)->count();
    
+
 
    $comentario=DB::table('comentarios As c')
    ->join('users As u', 'u.id','=','c.id_usuario')
