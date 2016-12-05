@@ -78,6 +78,7 @@
                               <div class="simpleLens-container">
                                   <div class="simpleLens-big-image-container">
                                       <a>
+                                      <a class="simpleLens-lens-image" data-lens-image="{{asset("imgart/<% imagen %>")}}">
                                           <img id="imagen" src="{{asset("imgart/<% imagen %>")}}" class="simpleLens-big-image">
                                       </a>
                                   </div>

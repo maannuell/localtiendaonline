@@ -190,7 +190,7 @@
                         <p>${{number_format($a->precio-($a->precio*$a->promo), 2, '.', ',' )}}</p>
 
                       </div>
-                      <a class="aa-remove-product" href="{{url("/eliminarcarrito")}}/{{$a->id_orden}}"><span class="fa fa-times"></span></a>
+                      <a class="aa-remove-product" href="{{url("/eliminarcarrito")}}/{{$a->idpartida}}"><span class="fa fa-times"></span></a>
                     </li>
                        @endforeach
                        @foreach($total as $t)
@@ -479,7 +479,7 @@
               <div class="aa-support-single">
                 <span class="fa fa-clock-o"></span>
                 <h4>DINERO EN 30 DIAS</h4>
-                <P>si su Articulo no lo satsfacio le regresamos su dinero antes de 30 dias</P>
+                <P>si su Articulo no fue lo que esperaba le regresamos su dinero antes de 30 dias</P>
               </div>
             </div>
             <!-- single support -->

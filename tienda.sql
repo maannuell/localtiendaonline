@@ -1,5 +1,5 @@
 # Host: 127.0.0.1  (Version 5.5.5-10.1.13-MariaDB)
-# Date: 2016-11-27 15:14:17
+# Date: 2016-12-04 17:24:11
 # Generator: MySQL-Front 5.4  (Build 1.4)
 
 /*!40101 SET NAMES latin1 */;
@@ -44,25 +44,6 @@ CREATE TABLE `comentarios` (
 #
 
 INSERT INTO `comentarios` VALUES (1,1,2,'Muy buen producto','2016-11-17 06:37:40','2016-11-17 06:37:40'),(3,1,1,'Muy rapida laptop y muy buen precio','2016-11-17 07:57:10','2016-11-17 07:57:10');
-
-#
-# Structure for table "detalle_orden"
-#
-
-DROP TABLE IF EXISTS `detalle_orden`;
-CREATE TABLE `detalle_orden` (
-  `id_orden` int(11) NOT NULL DEFAULT '0',
-  `id_articulo` int(11) NOT NULL DEFAULT '0',
-  `preciouni` float NOT NULL DEFAULT '0',
-  `cantidad` int(11) NOT NULL DEFAULT '0',
-  `descuento` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id_orden`,`id_articulo`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-#
-# Data for table "detalle_orden"
-#
-
 
 #
 # Structure for table "estados"
@@ -113,13 +94,13 @@ CREATE TABLE `marcas` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "marcas"
 #
 
-INSERT INTO `marcas` VALUES (1,'Hp','marca hp','2016-11-04 02:40:02','2016-11-04 02:40:02'),(2,'Dell','marca dell','2016-11-06 04:08:25','2016-11-06 04:08:25'),(3,'Acer','marca acer','2016-11-06 05:19:35','2016-11-06 05:19:35');
+INSERT INTO `marcas` VALUES (1,'Hp','marca hp','2016-11-04 02:40:02','2016-11-04 02:40:02'),(2,'Dell','marca dell','2016-11-06 04:08:25','2016-11-06 04:08:25'),(3,'Acer','marca acer','2016-11-06 05:19:35','2016-11-06 05:19:35'),(4,'Cisco','marca cisco','2016-11-04 02:40:02','2016-11-04 02:40:02'),(5,'kingston','marca kingston','2016-11-28 01:44:50','2016-11-28 01:44:50'),(6,'LG','marga Lg','2016-11-28 01:45:30','2016-11-28 01:45:30'),(7,'Samsung','marca samsung','2016-11-28 01:45:59','2016-11-28 01:45:59'),(8,'Adata','marca Adata','2016-11-28 01:46:15','2016-11-28 01:46:15'),(9,'Asus','marca Asus','2016-11-28 01:46:28','2016-11-28 01:46:28'),(10,'TP-LINK','marca TP-LINK','2016-11-28 01:47:00','2016-11-28 01:47:00'),(11,'Sony','marca Sony','2016-11-28 01:47:12','2016-11-28 01:47:12'),(12,'Vorago','marca Vorago','2016-11-28 01:47:24','2016-11-28 01:47:24'),(13,'Lenovo','marca Lenovo','2016-11-28 01:46:15','2016-11-28 01:46:15'),(14,'Apple','marca Apple','2016-12-03 07:27:25','2016-12-03 07:27:25');
 
 #
 # Structure for table "migrations"
@@ -223,13 +204,13 @@ CREATE TABLE `articulos` (
   KEY `fk_idmarca` (`id_marca`),
   CONSTRAINT `fk_idmarca` FOREIGN KEY (`id_marca`) REFERENCES `marcas` (`id`),
   CONSTRAINT `fk_idsubcategoria` FOREIGN KEY (`id_subcategoria`) REFERENCES `subcategorias` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "articulos"
 #
 
-INSERT INTO `articulos` VALUES (1,'Laptop DELL Vostro 14 3000','Intel Core i3, 8 GB, 1000 GB, 14 pulgadas, Windows 7 Pro',8503.95,4,2,'1.jpg',5,0,0,NULL,'2016-11-10 03:48:37','2016-11-10 03:48:37'),(2,'Laptop DELL Latitude E3460',' Intel Core i5, 4 GB, 500 GB, 14 pulgadas, Windows 7 Pro',12211.5,4,2,'2.jpg',20,0.04,0,NULL,'2016-11-15 04:17:51','2016-11-15 04:17:51'),(3,'Laptop HP 240 G4 Notebook','Intel Celeron, 4 GB, 500 GB, 14 pulgadas, Windows 10 Home',4239.9,4,1,'3.jpg',5,0.04,0,NULL,'2016-11-15 04:21:26','2016-11-15 04:21:26'),(4,'Laptop HP 240 G5 Notebook','Intel Celeron, 8 GB, 1000 GB, 14 pulgadas, Windows 10 Home',4877.4,4,1,'4.jpg',10,0.04,0,NULL,'2016-11-15 04:21:26','2016-11-15 04:21:26'),(5,'Laptop HP ProBook 440 G3','Intel Core i3, 8 GB, 1000 GB, 14 pulgadas, Windows 7 Pro',10460,4,1,'5.jpg',15,0.03,0,NULL,'2016-11-15 04:21:26','2016-11-15 04:21:26');
+INSERT INTO `articulos` VALUES (1,'Laptop DELL Vostro 14 3000','Intel Core i3, 8 GB, 1000 GB, 14 pulgadas, Windows 7 Pro',8503.95,4,2,'1.jpg',34,0,4,NULL,'2016-11-10 03:48:37','2016-11-10 03:48:37'),(2,'Laptop DELL Latitude E3460',' Intel Core i5, 4 GB, 500 GB, 14 pulgadas, Windows 7 Pro',12211.5,4,2,'2.jpg',50,0.04,6,NULL,'2016-11-15 04:17:51','2016-11-15 04:17:51'),(3,'Laptop HP 240 G4 Notebook','Intel Celeron, 4 GB, 500 GB, 14 pulgadas, Windows 10 Home',4239.9,4,1,'3.jpg',25,0.04,1,NULL,'2016-11-15 04:21:26','2016-11-15 04:21:26'),(4,'Laptop HP 240 G5 Notebook','Intel Celeron, 8 GB, 1000 GB, 14 pulgadas, Windows 10 Home',4877.4,4,1,'4.jpg',40,0.04,4,NULL,'2016-11-15 04:21:26','2016-11-15 04:21:26'),(5,'Laptop HP ProBook 440 G3','Intel Core i3, 8 GB, 1000 GB, 14 pulgadas, Windows 7 Pro',10460,4,1,'5.jpg',45,0.03,1,NULL,'2016-11-15 04:21:26','2016-11-15 04:21:26'),(6,'All in One HP 20-e111la','19.5 pulgadas, Intel Celeron, 4 GB, 500 GB, Windows 10 Home',5297.25,1,1,'6.jpg',50,0,0,NULL,NULL,NULL),(7,'All In One LENOVO Idea AIO300-22ACL','21.5 pulgadas, AMD A6, 4 GB, 1000 GB, Windows 10 Home',8068.32,1,13,'7.jpg',40,0,0,NULL,NULL,NULL),(8,'All in One LENOVO Think S400Z','21.5 pulgadas, Intel Core i3, 4 GB, 500 GB, Windows 10 Pro',11123.8,1,13,'8.jpg',25,0,0,NULL,NULL,NULL),(9,'All in One HP 600 G2','21.5 pulgadas, Intel Core i5, 8 GB, 1000 GB, Windows 7 Pro',15855,1,1,'9.jpg',32,0,0,NULL,NULL,NULL),(10,'All In One ACER AZ1-611-MW1','19 pulgadas, Intel Pentium, 4 GB, 1000 GB, Windows 10',5821.2,1,3,'10.jpg',46,0,0,NULL,NULL,NULL),(11,'iMac APPLE iMac 21.5','21.5 pulgadas, Intel Core i5, 8 GB, 1000 GB, MAC OS X',20933,2,14,'11.jpg',52,0,3,NULL,NULL,NULL),(12,'iMac APPLE iMac 27','27 pulgadas, Intel Core i5, 8 GB, 1000 GB, MAC OS X',34614,2,14,'12.jpg',63,0,0,NULL,NULL,NULL),(13,'iPad APPLE Mini iPad','Apple A7, 32 GB, 7.9 pulgadas, 2048 x 1536 Pixeles, iOS 7',4797.45,3,14,'13.jpg',62,0,5,NULL,NULL,NULL),(14,'iPad APPLE iPad Air 2','Apple A8, 128 GB, 9.7 pulgadas, 2048 x 1536 Pixeles, IOS 8',10575.6,3,14,'14.jpg',36,0,0,NULL,NULL,NULL),(15,'iPad APPLE Mini iPad','Apple A7, 16 GB, 7.9 pulgadas, 2048 x 1536 Pixeles, iOS 7',4460.4,3,14,'15.jpg',64,0,0,NULL,NULL,NULL),(16,'iPad Air 2 WI-FI 32GB APPLE MNV62CL/A','Apple A8, 32 GB, 9.7 pulgadas, iOS 10',7077.79,3,14,'16.jpg',46,0,0,NULL,NULL,NULL),(17,'iPad APPLE','Apple A9, 32 GB, 9.7 pulgadas, 2048 x 1536 Pixeles, iOS 9',10825.5,3,14,'17.jpg',57,0,0,NULL,NULL,NULL);
 
 #
 # Structure for table "users"
@@ -254,7 +235,7 @@ CREATE TABLE `users` (
 # Data for table "users"
 #
 
-INSERT INTO `users` VALUES (1,'manuel meza','maannuell@gmail.com','$2y$10$6R4iOR6EQ6dPUB7Mdi9nFO/wp8ntbQKv0Ut3ABLnjvjMpC4WNc0W2',1,'WfOo4L2FxplhxnWyCJmqNvJxcAeoKwGwjBUyZBnRQXUq1AcpgTQS1dEyUhI6','2016-11-17 02:59:23','2016-11-27 22:13:38','user.png'),(2,'Miguel Villegaz','miguel@gmail.com','$2y$10$tZ4nRxVHi3.WdXxUR63zr.jRLsocTMVNq8RV/KDITIB74OxKuyaWW',2,'Wb1aflCNMGA3uDhwUqRdqrfNQ2J59bFKa913BpC2SW7mdRm0qorUNfZs0qGH','2016-11-17 05:23:42','2016-11-20 21:55:18','user.png'),(3,'Celis Lopez','celis@gmail.com','$2y$10$r8ibj1caHDcTrY/3eCUFv.1lIS9Qvc66R31BVhXsvuEMK1F8XKTsu',2,'3ZBNdcCs84zolkmUq9GD7lXar6YLKWK041m8uSA3PkkMlNok07F3HbtN8DI0','2016-11-20 07:20:04','2016-11-20 07:20:48','user.png'),(4,'brisa jazmin','brisa@gmail.com','$2y$10$di3YzqLDxTePU1ruUp4KX.DYysC8H83lrqoEvjeXz9pngi3I6z9qK',2,NULL,'2016-11-20 08:16:13','2016-11-20 08:16:13','user.png'),(5,'pedro azpe','pedro@gmail.com','$2y$10$2KPAABfaYr8ne.PddJeqlOyAhUCqrDq5ls60r6aeRrjmvp/guU/Me',1,'27fohBQDWQFaKO2rWJJxUvqEI8g6lWEUi7Cge47fZAGs2Ticqv5pqXQOATOd','2016-11-20 08:20:26','2016-11-20 08:21:29','user.png');
+INSERT INTO `users` VALUES (1,'manuel meza','maannuell@gmail.com','$2y$10$6R4iOR6EQ6dPUB7Mdi9nFO/wp8ntbQKv0Ut3ABLnjvjMpC4WNc0W2',1,'WskL6tia5nIQItXg99xhCfxmZRqejZG12F815tx4FFm3co3MYzxGd8WbZmx8','2016-11-17 02:59:23','2016-12-04 07:24:06','user.png'),(2,'Miguel Villegaz','miguel@gmail.com','$2y$10$tZ4nRxVHi3.WdXxUR63zr.jRLsocTMVNq8RV/KDITIB74OxKuyaWW',2,'Wb1aflCNMGA3uDhwUqRdqrfNQ2J59bFKa913BpC2SW7mdRm0qorUNfZs0qGH','2016-11-17 05:23:42','2016-11-20 21:55:18','user.png'),(3,'Celis Lopez','celis@gmail.com','$2y$10$r8ibj1caHDcTrY/3eCUFv.1lIS9Qvc66R31BVhXsvuEMK1F8XKTsu',2,'3ZBNdcCs84zolkmUq9GD7lXar6YLKWK041m8uSA3PkkMlNok07F3HbtN8DI0','2016-11-20 07:20:04','2016-11-20 07:20:48','user.png'),(4,'brisa jazmin','brisa@gmail.com','$2y$10$di3YzqLDxTePU1ruUp4KX.DYysC8H83lrqoEvjeXz9pngi3I6z9qK',2,NULL,'2016-11-20 08:16:13','2016-11-20 08:16:13','user.png'),(5,'pedro azpe','pedro@gmail.com','$2y$10$2KPAABfaYr8ne.PddJeqlOyAhUCqrDq5ls60r6aeRrjmvp/guU/Me',1,'27fohBQDWQFaKO2rWJJxUvqEI8g6lWEUi7Cge47fZAGs2Ticqv5pqXQOATOd','2016-11-20 08:20:26','2016-11-20 08:21:29','user.png');
 
 #
 # Structure for table "ordenes"
@@ -263,7 +244,6 @@ INSERT INTO `users` VALUES (1,'manuel meza','maannuell@gmail.com','$2y$10$6R4iOR
 DROP TABLE IF EXISTS `ordenes`;
 CREATE TABLE `ordenes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_articulo` int(11) DEFAULT NULL,
   `id_cliente` int(11) unsigned DEFAULT NULL,
   `id_paqueteria` int(11) DEFAULT NULL,
   `id_ciudad` int(11) DEFAULT NULL,
@@ -274,18 +254,67 @@ CREATE TABLE `ordenes` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `FK_articulos` (`id_articulo`),
   KEY `fk_cliente` (`id_cliente`),
   KEY `fk_paqueteria` (`id_paqueteria`),
   KEY `fk_ciudad` (`id_ciudad`),
-  CONSTRAINT `FK_articulos` FOREIGN KEY (`id_articulo`) REFERENCES `articulos` (`id`),
   CONSTRAINT `fk_ciudad` FOREIGN KEY (`id_ciudad`) REFERENCES `ciudades` (`id`),
   CONSTRAINT `fk_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `users` (`id`),
   CONSTRAINT `fk_paqueteria` FOREIGN KEY (`id_paqueteria`) REFERENCES `paqueterias` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 #
 # Data for table "ordenes"
 #
 
-INSERT INTO `ordenes` VALUES (11,3,1,NULL,NULL,NULL,'2016-11-11',NULL,0,'2016-11-26 22:35:05','2016-11-26 22:35:05');
+INSERT INTO `ordenes` VALUES (8,1,NULL,NULL,NULL,'2016-12-12',NULL,3,'2016-12-04 23:29:38','2016-12-04 23:29:38'),(10,1,NULL,NULL,NULL,'2016-12-12',NULL,3,'2016-12-04 23:33:29','2016-12-04 23:33:29'),(11,1,NULL,NULL,NULL,'2016-12-12',NULL,3,'2016-12-04 23:36:56','2016-12-04 23:36:56'),(12,1,NULL,NULL,NULL,'2016-12-12',NULL,3,'2016-12-04 23:38:19','2016-12-04 23:38:19'),(13,1,NULL,NULL,NULL,'2016-12-12',NULL,3,'2016-12-04 23:39:50','2016-12-04 23:39:50'),(14,1,NULL,NULL,NULL,'2016-12-12',NULL,3,'2016-12-04 23:40:06','2016-12-04 23:40:06'),(15,1,NULL,NULL,NULL,'2016-12-12',NULL,3,'2016-12-04 23:41:00','2016-12-04 23:41:00'),(16,1,NULL,NULL,NULL,'2016-12-12',NULL,3,'2016-12-04 23:43:26','2016-12-04 23:43:26');
+
+#
+# Structure for table "detalle_orden"
+#
+
+DROP TABLE IF EXISTS `detalle_orden`;
+CREATE TABLE `detalle_orden` (
+  `id_orden` int(11) NOT NULL DEFAULT '0',
+  `id_articulo` int(11) NOT NULL DEFAULT '0',
+  `preciouni` float NOT NULL DEFAULT '0',
+  `cantidad` int(11) NOT NULL DEFAULT '0',
+  `descuento` int(11) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  KEY `fk_orden` (`id_orden`),
+  KEY `fk_articulo` (`id_articulo`),
+  CONSTRAINT `fk_articulo` FOREIGN KEY (`id_articulo`) REFERENCES `articulos` (`id`),
+  CONSTRAINT `fk_orden` FOREIGN KEY (`id_orden`) REFERENCES `ordenes` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+#
+# Data for table "detalle_orden"
+#
+
+INSERT INTO `detalle_orden` VALUES (8,1,8503.95,1,0,'2016-12-04 23:29:38','2016-12-04 23:29:38'),(8,1,8503.95,1,0,'2016-12-04 23:30:24','2016-12-04 23:30:24'),(8,13,4797.45,2,0,'2016-12-04 23:30:24','2016-12-04 23:30:24'),(8,2,11723,2,0,'2016-12-04 23:30:24','2016-12-04 23:30:24'),(8,15,4460.4,2,0,'2016-12-04 23:33:29','2016-12-04 23:33:29'),(8,7,8068.32,1,0,'2016-12-04 23:33:29','2016-12-04 23:33:29'),(8,1,8503.95,1,0,'2016-12-04 23:33:29','2016-12-04 23:33:29'),(8,12,34614,1,0,'2016-12-04 23:36:56','2016-12-04 23:36:56'),(8,11,20933,1,0,'2016-12-04 23:36:56','2016-12-04 23:36:56'),(8,6,5297.25,1,0,'2016-12-04 23:36:56','2016-12-04 23:36:56'),(11,2,11723,1,0,'2016-12-04 23:40:06','2016-12-04 23:40:06'),(15,8,11123.8,1,0,'2016-12-04 23:41:00','2016-12-04 23:41:00'),(16,14,10575.6,1,0,'2016-12-04 23:43:26','2016-12-04 23:43:26'),(16,10,5821.2,1,0,'2016-12-04 23:43:26','2016-12-04 23:43:26'),(16,13,4797.45,1,0,'2016-12-04 23:43:26','2016-12-04 23:43:26');
+
+#
+# Structure for table "cartemplate"
+#
+
+DROP TABLE IF EXISTS `cartemplate`;
+CREATE TABLE `cartemplate` (
+  `idpartida` int(11) NOT NULL AUTO_INCREMENT,
+  `id_articulo` int(11) DEFAULT NULL,
+  `id_cliente` int(11) unsigned DEFAULT NULL,
+  `cantidad` int(11) DEFAULT NULL,
+  `estatus` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`idpartida`),
+  KEY `fk_articulos` (`id_articulo`),
+  KEY `fk_clientes` (`id_cliente`),
+  CONSTRAINT `fk_articulos` FOREIGN KEY (`id_articulo`) REFERENCES `articulos` (`id`),
+  CONSTRAINT `fk_clientes` FOREIGN KEY (`id_cliente`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+#
+# Data for table "cartemplate"
+#
+
+INSERT INTO `cartemplate` VALUES (1,1,1,1,1,'2016-12-04 07:06:48','2016-12-04 07:06:48'),(3,13,1,2,1,'2016-12-04 07:13:40','2016-12-04 07:13:40'),(4,2,1,2,1,'2016-12-04 07:17:32','2016-12-04 07:17:32'),(5,15,1,2,1,'2016-12-04 23:32:14','2016-12-04 23:32:14'),(6,7,1,1,1,'2016-12-04 23:32:20','2016-12-04 23:32:20'),(7,1,1,1,1,'2016-12-04 23:32:28','2016-12-04 23:32:28'),(8,12,1,1,1,'2016-12-04 23:36:33','2016-12-04 23:36:33'),(9,11,1,1,1,'2016-12-04 23:36:38','2016-12-04 23:36:38'),(10,6,1,1,1,'2016-12-04 23:36:47','2016-12-04 23:36:47'),(11,2,1,1,1,'2016-12-04 23:38:15','2016-12-04 23:38:15'),(12,8,1,1,1,'2016-12-04 23:40:56','2016-12-04 23:40:56'),(13,14,1,1,1,'2016-12-04 23:42:14','2016-12-04 23:42:14'),(14,10,1,1,1,'2016-12-04 23:42:25','2016-12-04 23:42:25'),(15,13,1,1,1,'2016-12-04 23:42:32','2016-12-04 23:42:32'),(16,1,1,1,0,'2016-12-04 23:59:02','2016-12-04 23:59:02');

@@ -9,6 +9,7 @@ use DB;
 use App\Comentario;
 use Auth;
 use App\Ordene;
+use App\Cartemplat;
 
 class ArticuloController extends Controller
 {
@@ -56,6 +57,17 @@ public function drop($id){
 
 }
 
+public function seleciudad($id){
+
+   $seleciudades=DB::table('ciudades')
+   ->select('id','nombre')
+   ->where('id_estado','=', $id)
+   ->get();
+
+   return \Response::json($seleciudades);
+
+}
+
 public function ver($id){
 
   $articulo=DB::table('articulos')
@@ -69,24 +81,24 @@ public function ver($id){
 $iduser = Auth::user()->id;
 
 
-$countcarrito = DB::table('ordenes')
+$countcarrito = DB::table('cartemplate')
  ->where('estatus','=','0')
  ->where('id_cliente','=', $iduser)
  ->count();
 
  
 
-$articuloscar=DB::table('ordenes As o')
-->join('articulos As a','a.id','=','o.id_articulo')
-->where('o.estatus','=','0')
-->where('o.id_cliente','=', $iduser)
-->select('a.*','o.id As id_orden','o.estatus','o.id_cliente')
+$articuloscar=DB::table('cartemplate As c')
+->join('articulos As a','a.id','=','c.id_articulo')
+->where('c.estatus','=','0')
+->where('c.id_cliente','=', $iduser)
+->select('a.*','c.idpartida','c.estatus','c.id_cliente')
 ->get();
 
-$total = DB::table('ordenes As o')
-->join('articulos As a','a.id','=','o.id_articulo')
-->where('o.estatus','=','0')
-->where('o.id_cliente','=', $iduser)
+$total = DB::table('cartemplate As c')
+->join('articulos As a','a.id','=','c.id_articulo')
+->where('c.estatus','=','0')
+->where('c.id_cliente','=', $iduser)
 ->select(DB::raw('sum(a.precio-(a.precio*a.promo)) as todo'))
 ->get();
 
@@ -113,27 +125,26 @@ public function vermarca($idmarca){
 $iduser = Auth::user()->id;
 
 
-$countcarrito = DB::table('ordenes')
+$countcarrito = DB::table('cartemplate')
  ->where('estatus','=','0')
  ->where('id_cliente','=', $iduser)
  ->count();
 
  
 
-$articuloscar=DB::table('ordenes As o')
-->join('articulos As a','a.id','=','o.id_articulo')
-->where('o.estatus','=','0')
-->where('o.id_cliente','=', $iduser)
-->select('a.*','o.id As id_orden','o.estatus','o.id_cliente')
+$articuloscar=DB::table('cartemplate As c')
+->join('articulos As a','a.id','=','c.id_articulo')
+->where('c.estatus','=','0')
+->where('c.id_cliente','=', $iduser)
+->select('a.*','c.idpartida','c.estatus','c.id_cliente')
 ->get();
 
-$total = DB::table('ordenes As o')
-->join('articulos As a','a.id','=','o.id_articulo')
-->where('o.estatus','=','0')
-->where('o.id_cliente','=', $iduser)
+$total = DB::table('cartemplate As c')
+->join('articulos As a','a.id','=','c.id_articulo')
+->where('c.estatus','=','0')
+->where('c.id_cliente','=', $iduser)
 ->select(DB::raw('sum(a.precio-(a.precio*a.promo)) as todo'))
 ->get();
-
 
 
    return view('productos',compact('articulo','countcarrito','articuloscar','total'));
@@ -180,24 +191,24 @@ if (Auth::guest()){
 
   $iduser = Auth::user()->id;
 
-  $countcarrito = DB::table('ordenes')
+  $countcarrito = DB::table('cartemplate')
  ->where('estatus','=','0')
  ->where('id_cliente','=', $iduser)
  ->count();
 
  
 
-$articuloscar=DB::table('ordenes As o')
-->join('articulos As a','a.id','=','o.id_articulo')
-->where('o.estatus','=','0')
-->where('o.id_cliente','=', $iduser)
-->select('a.*','o.id As id_orden','o.estatus','o.id_cliente')
+$articuloscar=DB::table('cartemplate As c')
+->join('articulos As a','a.id','=','c.id_articulo')
+->where('c.estatus','=','0')
+->where('c.id_cliente','=', $iduser)
+->select('a.*','c.idpartida','c.estatus','c.id_cliente')
 ->get();
 
-$total = DB::table('ordenes As o')
-->join('articulos As a','a.id','=','o.id_articulo')
-->where('o.estatus','=','0')
-->where('o.id_cliente','=', $iduser)
+$total = DB::table('cartemplate As c')
+->join('articulos As a','a.id','=','c.id_articulo')
+->where('c.estatus','=','0')
+->where('c.id_cliente','=', $iduser)
 ->select(DB::raw('sum(a.precio-(a.precio*a.promo)) as todo'))
 ->get();
 
@@ -277,7 +288,7 @@ if (Auth::guest()){
 
 
 $iduser = Auth::user()->id;
-$countexiste = DB::table('ordenes')
+$countexiste = DB::table('cartemplate')
  ->where('estatus','=','0')
  ->where('id_cliente','=', $iduser)
  ->where('id_articulo','=', $id)
@@ -297,10 +308,10 @@ $date=date('Y-m-n');
 
 
 
-  $nuevo= new Ordene();
+  $nuevo= new Cartemplat();
   $nuevo->id_articulo=$id;
   $nuevo->id_cliente=$iduser;
-  $nuevo->fecha=$date;
+  $nuevo->cantidad=1;
   $nuevo->estatus=0;
   $nuevo->save();
    
@@ -320,7 +331,7 @@ if (Auth::guest()){
 
 
 $iduser = Auth::user()->id;
-$countexiste = DB::table('ordenes')
+$countexiste = DB::table('cartemplate')
  ->where('estatus','=','0')
  ->where('id_cliente','=', $iduser)
  ->where('id_articulo','=', $id)
@@ -339,10 +350,10 @@ $date=date('Y-m-n');
 
 
 
-  $nuevo= new Ordene();
+  $nuevo= new Cartemplat();
   $nuevo->id_articulo=$id;
   $nuevo->id_cliente=$iduser;
-  $nuevo->fecha=$date;
+  $nuevo->cantidad=1;
   $nuevo->estatus=0;
   $nuevo->save();
    

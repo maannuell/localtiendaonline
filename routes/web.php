@@ -13,6 +13,9 @@
 
 Route::get('/','FormulariosController@index');     
 Route::get('/ircarrito','FormulariosController@ircar');
+Route::get('/continuarcompra','OrdenesController@continuar');
+Route::get('/confirmcarrito/{id}','OrdenesController@visconfirm');
+Route::post('/terminarorden/{id}','OrdenesController@terminar');
 
 //registrarse
 Route::get('/registrarse','RegistrousuariosController@register');
@@ -42,6 +45,8 @@ Route::get('/detaproducto/{id}','ArticuloController@detaver');
 
 Route::get('/productosxmarca/{id}','ArticuloController@vermarca');
 Route::get('/sele/{id}','ArticuloController@drop');
+//selecion de estado
+Route::get('/seleciudad/{id}','ArticuloController@seleciudad');
 
 Auth::routes();
 
@@ -68,3 +73,5 @@ Route::get('/agregarcarrdetalle/{id}','ArticuloController@acarritodetalle');
 Route::get('/eliminarcarrito/{id}','OrdenesController@eliminarcompra');
 
 Route::get('/api/v1/modal/{id}', 'ArticuloController@modales');
+
+Route::get('cant/{ca}/{id}','OrdenesController@cantidad');

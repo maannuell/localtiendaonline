@@ -78,27 +78,24 @@ public function index(){
 $iduser = Auth::user()->id;
 
 
-$countcarrito = DB::table('ordenes')
+$countcarrito = DB::table('cartemplate')
  ->where('estatus','=','0')
  ->where('id_cliente','=', $iduser)
  ->count();
 
  
 
-$articuloscar=DB::table('ordenes As o')
-->join('articulos As a','a.id','=','o.id_articulo')
-->where('o.estatus','=','0')
-->where('o.id_cliente','=', $iduser)
-->select('a.*','o.id As id_orden','o.estatus','o.id_cliente')
+$articuloscar=DB::table('cartemplate As c')
+->join('articulos As a','a.id','=','c.id_articulo')
+->where('c.estatus','=','0')
+->where('c.id_cliente','=', $iduser)
+->select('a.*','c.idpartida','c.estatus','c.id_cliente')
 ->get();
 
-
-
-
-$total = DB::table('ordenes As o')
-->join('articulos As a','a.id','=','o.id_articulo')
-->where('o.estatus','=','0')
-->where('o.id_cliente','=', $iduser)
+$total = DB::table('cartemplate As c')
+->join('articulos As a','a.id','=','c.id_articulo')
+->where('c.estatus','=','0')
+->where('c.id_cliente','=', $iduser)
 ->select(DB::raw('sum(a.precio-(a.precio*a.promo)) as todo'))
 ->get();
 
@@ -130,27 +127,24 @@ if (Auth::guest()){
 	$iduser = Auth::user()->id;
 
 
-$countcarrito = DB::table('ordenes')
+$countcarrito = DB::table('cartemplate')
  ->where('estatus','=','0')
  ->where('id_cliente','=', $iduser)
  ->count();
 
  
 
-$articuloscar=DB::table('ordenes As o')
-->join('articulos As a','a.id','=','o.id_articulo')
-->where('o.estatus','=','0')
-->where('o.id_cliente','=', $iduser)
-->select('a.*','o.id As id_orden','o.estatus','o.id_cliente')
+$articuloscar=DB::table('cartemplate As c')
+->join('articulos As a','a.id','=','c.id_articulo')
+->where('c.estatus','=','0')
+->where('c.id_cliente','=', $iduser)
+->select('a.*','c.idpartida','c.estatus','c.id_cliente','c.cantidad')
 ->get();
 
-
-
-
-$total = DB::table('ordenes As o')
-->join('articulos As a','a.id','=','o.id_articulo')
-->where('o.estatus','=','0')
-->where('o.id_cliente','=', $iduser)
+$total = DB::table('cartemplate As c')
+->join('articulos As a','a.id','=','c.id_articulo')
+->where('c.estatus','=','0')
+->where('c.id_cliente','=', $iduser)
 ->select(DB::raw('sum(a.precio-(a.precio*a.promo)) as todo'))
 ->get();
 		return view('carrito',compact('countcarrito','articuloscar','total'));

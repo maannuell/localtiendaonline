@@ -10,7 +10,7 @@
     @section('contenido')
    
     <!-- Start slider -->
-  <section id="aa-slider">
+  <section id="aa-slider" >
     <div class="aa-slider-area">
       <div id="sequence" class="seq">
          <ul class="seq-canvas">
@@ -87,7 +87,7 @@
   </section>
    <!-- popular section -->
   
-  <section id="aa-popular-category">
+  <section id="aa-popular-category" ng-controller="ProductoController" ng-app="productosmodulo">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -121,7 +121,7 @@
                         </figcaption>
                       </figure>                     
                       <div class="aa-product-hvr-content">
-                        <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>                            
+                       <a name="prueba"  data-toggle2="tooltip" data-placement="top" title="Quick View" ><span class="fa fa-search" ng-click="toggle('add', {{$a->id}})"></span></a>                              
                       </div>
                       <!-- product badge -->
                     
@@ -228,7 +228,60 @@
                   </ul>
                    <a class="aa-browse-btn" href="#">Browse all Product <span class="fa fa-long-arrow-right"></span></a>
                 </div>
-                <!-- / latest product category -->              
+                <!-- / latest product category -->  
+                      <div class="modal fade" id="quick-view-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">                      
+                    <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <div class="row">
+                        <!-- Modal view slider -->
+                        <div class="col-md-6 col-sm-6 col-xs-12">                              
+                          <div class="aa-product-view-slider">                                
+                            <div class="simpleLens-gallery-container" id="demo-1">
+                              <div class="simpleLens-container">
+                                  <div class="simpleLens-big-image-container">
+                                      <a>
+                                      <a class="simpleLens-lens-image" data-lens-image="{{asset("imgart/<% imagen %>")}}">
+                                          <img id="imagen" src="{{asset("imgart/<% imagen %>")}}" class="simpleLens-big-image">
+                                      </a>
+                                     
+                                  </div>
+                              </div>
+                            
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Modal view content -->
+                      
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <div class="aa-product-view-content">
+                            <h4><% nombre %></h4>
+                            <div class="aa-price-block">
+                              <div id="precio" class="aa-product-view-price">$ <% precio %> </div>
+                              <p class="aa-product-avilability">Existencia: <span id="existencia"> <% existencia %> </span></p>
+                            </div>
+                            <p></p>
+                           
+                            <div class="aa-prod-quantity">
+                              <h4> <% descripcion %> </h4>
+                              <p class="aa-prod-category">
+                               
+                            </div>
+                            <div class="aa-prod-view-bottom">
+                              <a href="{{url("/agregarcarrdetalle")}}/<% nuevo %>" class="aa-add-to-cart-btn"><span class="fa fa-shopping-cart"></span>A Carrito</a>
+                              <a id="irdetalle" href="{{url("/detaproducto")}}/<% nuevo %>" class="aa-add-to-cart-btn">Ver detalle</a>
+
+
+                            </div>
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </div>                        
+                  </div><!-- /.modal-content -->
+                </div><!-- /.-dialog -->
+              </div>            
               </div>
             </div>
           </div> 

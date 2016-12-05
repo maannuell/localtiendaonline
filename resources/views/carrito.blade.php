@@ -31,39 +31,34 @@
                         <td><a href="#"><img src="{{asset("imgart/$a->imagen")}}" alt="img"></a></td>
                         <td><a class="aa-cart-title" href="#">{{$a->nombre}}</a></td>
                         <td>${{number_format($a->precio-($a->precio*$a->promo), 2, '.', ',' )}}</td>
-                        <td><input name="cantidad" id="cantidad" class="aa-cart-quantity" type="number" value="1"></td>
-                        <td><input type="number" readonly="readonly" name="subtotal" id="subtotal"</td>
+                        <input type="hidden" name="precio2{{$a->id}}" value="{{$a->precio-($a->precio*$a->promo)}}">
+                        
+                        <td><select class="form-control" name="cantidad{{$a->id}}">
+        <option  selected>{{$a->cantidad}}</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+              
+             
+              
+        </select></td>
+                        <td><input type="number"  name="subtotal{{$a->id}}" id="subtotal" value="{{($a->precio-($a->precio*$a->promo))*$a->cantidad}}" readonly></td>
                       </tr>
                       @endforeach
-                      <tr>
-                        <td colspan="6" class="aa-cart-view-bottom">
-                          <div class="aa-cart-coupon">
-                            <input class="aa-coupon-code" type="text" placeholder="Coupon">
-                            <input class="aa-cart-view-btn" type="submit" value="Apply Coupon">
-                          </div>
-                          <input class="aa-cart-view-btn" type="submit" value="Update Cart">
-                        </td>
-                      </tr>
+                      
                       </tbody>
                   </table>
                 </div>
              </form>
              <!-- Cart Total view -->
              <div class="cart-view-total">
-               <h4>Cart Totals</h4>
-               <table class="aa-totals-table">
-                 <tbody>
-                   <tr>
-                     <th>Subtotal</th>
-                     <td>$450</td>
-                   </tr>
-                   <tr>
-                     <th>Total</th>
-                     <td>$450</td>
-                   </tr>
-                 </tbody>
-               </table>
-               <a href="#" class="aa-cart-view-btn">Proced to Checkout</a>
+               
+               
+               <a href="{{url("/continuarcompra")}}" class="aa-cart-view-btn">Continuar con la compra</a>
              </div>
            </div>
          </div>
@@ -72,4 +67,23 @@
    </div>
  </section>
 
-    @stop
+ 
+<script type="text/javascript">
+$(document).ready(function(){
+  importe_total = 0;
+ @foreach($articuloscar As $a)
+  $("select[name=cantidad{{$a->id}}]").change(function(){
+    var cant = $("select[name=cantidad{{$a->id}}]").val();
+            $('select[name=cantidad{{$a->id}}]').val()
+           
+            $('input[name=subtotal{{$a->id}}]').val($('input[name=precio2{{$a->id}}]').val()*$('select[name=cantidad{{$a->id}}]').val());
+            
+       $.get('/proyectoTienda5/public/cant/'+cant+'/{{$a->id}}'); 
+
+        });
+  @endforeach
+
+  });
+</script>
+ 
+ @stop
