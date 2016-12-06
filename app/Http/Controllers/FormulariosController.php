@@ -102,12 +102,12 @@ $total = DB::table('cartemplate As c')
 
 $artdescuento=DB::table('articulos')
 ->orderBy('promo', 'desc')
-->limit(3)
+->limit(5)
 ->get();
 
 $artvisitas=DB::table('articulos')
 ->orderBy('visitas', 'desc')
-->limit(3)
+->limit(5)
 ->get();
 
 

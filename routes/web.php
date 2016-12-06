@@ -60,6 +60,7 @@ Route::get('/excel', 'FormulariosController@excel');
 //consultas admin 
 Route::get('/consultacomentario','ComentarioController@consultar');
 Route::get('/eliminarcomentario/{id}','ComentarioController@eliminar');
+Route::get('/consultaordenes','OrdenesController@vistaconsulta');
 //vista inventario
 Route::get('/consultainventario','ArticuloController@coninventario');
 //agregar inventario

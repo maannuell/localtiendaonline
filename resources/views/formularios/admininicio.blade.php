@@ -40,6 +40,19 @@
               </div><!-- /.info-box -->
 </a>
 </li>
+ <li><a href="{{url("/consultaordenes")}}">
+               <div class="info-box bg-red">
+                <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Ordenes</span>
+                  
+                  <span class="progress-description">
+                    Visor de Ordenes
+                  </span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+</a>
+</li>
 @stop
 
 

@@ -192,5 +192,22 @@ public function terminar($id, Request $datos){
 
 }
 
+public function vistaconsulta(){
+
+  $user = Auth::user();
+
+$ordenes=DB::table('ordenes As o')
+->join('users As u','u.id','=','o.id_cliente')
+->join('paqueterias As p','p.id','=','o.id_paqueteria')
+->join('ciudades As c','c.id','=','o.id_ciudad')
+->select('o.*','o.id As o_id','u.*','p.nombre as nombre_paquete','c.nombre As nombre_ciudad')
+->whereIn('o.estatus', ['3', '4'])
+->get();
+ 
+
+
+   return view ('formularios.listadoorden',compact('ordenes','user'));
+}
+
 
 }
