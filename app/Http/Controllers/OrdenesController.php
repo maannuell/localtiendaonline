@@ -11,7 +11,8 @@ use App\detalle_orden;
 use App\Estado;
 use App\Ciudad;
 use App\Paquete;
-
+use Mail;
+use App\User;
 class OrdenesController extends Controller
 {
     //
@@ -188,7 +189,7 @@ public function terminar($id, Request $datos){
      $orden->save();
      
 
-     return Redirect("/");
+     return Redirect("/pruebacorreo/".$id);
 
 }
 
@@ -207,6 +208,42 @@ $ordenes=DB::table('ordenes As o')
 
 
    return view ('formularios.listadoorden',compact('ordenes','user'));
+}
+public function fechaentrega($id , Request $datos){
+
+
+     $orden=Ordene::find($id);
+     $orden->fecha_envio=$datos->input('fecha_envio');
+     $orden->estatus=4;
+     $orden->save();
+     
+     return Redirect('/consultaordenes');
+
+}
+
+public function correo($idorden){
+  $iduser = Auth::user()->id;
+   $user=user::find($iduser);
+   $orden=Ordene::find($idorden);
+   $detalle=DB::table('detalle_orden As o')
+   ->join('articulos As a','a.id','=','o.id_articulo')
+   ->where('id_orden','=',$idorden)
+   ->get();
+
+  $sumtotal=DB::table('detalle_orden')
+  ->where('id_orden','=', $idorden)
+  ->select(DB::raw('sum(preciouni*cantidad) as sumtotal'))
+  ->first();
+  
+  
+       
+  Mail::send('emails.prueba', ['user' => $user,'detalle' => $detalle,'sumtotal' => $sumtotal], function ($m) use ($user, $detalle) {
+            
+
+            $m->to($user->email, $user->name)->subject('Detalle de Compra');
+        });
+
+   return Redirect("/");
 }
 
 

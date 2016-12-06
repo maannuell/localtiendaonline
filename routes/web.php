@@ -76,3 +76,7 @@ Route::get('/eliminarcarrito/{id}','OrdenesController@eliminarcompra');
 Route::get('/api/v1/modal/{id}', 'ArticuloController@modales');
 
 Route::get('cant/{ca}/{id}','OrdenesController@cantidad');
+//agregar fecha entrega orden 
+Route::post('/agregarfecha/{id}','OrdenesController@fechaentrega');
+//prueba correo
+Route::get('/pruebacorreo/{id}','OrdenesController@correo');

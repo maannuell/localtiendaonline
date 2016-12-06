@@ -74,18 +74,7 @@
                 <!-- / language -->
 
                 <!-- start currency -->
-                <div class="aa-currency">
-                  <div class="dropdown">
-                    <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                      <i class="fa fa-usd"></i>PESOS
-                      <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                      <li><a href="#"><i class="fa fa-usd"></i>PESOS</a></li>
-                      <li><a href="#"><i class="fa fa-usd"></i>USD</a></li>
-                    </ul>
-                  </div>
-                </div>
+                
                 <!-- / currency -->
                 <!-- start cellphone -->
                 <div class="cellphone hidden-xs">
@@ -133,9 +122,9 @@
 
                   </li>
                   @endif
-                  <li class="hidden-xs"><a href="wishlist.html">Deseos</a></li>
+                  
                   <li class="hidden-xs"><a href="{{url("/ircarrito")}}">Mi Carrito</a></li>
-                  <li class="hidden-xs"><a href="checkout.html">Revision</a></li>
+                  
                 
 
                 </ul>
@@ -204,7 +193,7 @@
                     </li>
 
                   </ul>
-                  <a class="aa-cartbox-checkout aa-primary-btn" href="checkout.html">Comprar</a>
+                  <a class="aa-cartbox-checkout aa-primary-btn" href="{{url("/ircarrito")}}">Comprar</a>
                  @endforeach
                 </div>
   @else

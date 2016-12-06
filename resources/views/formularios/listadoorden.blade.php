@@ -20,7 +20,7 @@
           <th>Paqueteria</th>
           <th>Ciudad</th>
           <th>Dirreccion</th>
-          <th>fechaCreacion</th>
+          <th>Fecha Pedido</th>
           <th>Fecha Entrega</th>
       </tr>
       </thead>
@@ -34,7 +34,8 @@
                   <td>{{$o->nombre_ciudad}}</td>
                   <td>{{$o->direnvio}}</td>
                   <td>{{$o->fecha}}</td>
-                 <td>
+@if($o->estatus==3)
+<td>
 
  <form  action="{{url('/agregarfecha')}}/{{$o->o_id}}" method="POST">
                     <input  type="hidden" name="_token" value="{{csrf_token()}}">
@@ -46,9 +47,14 @@
                    
                         
 </td>
+@else 
+
+<td>{{$o->fecha_envio}}</td>
+
+@endif
 <td>
   <label class="label-success">{{$o->estatus==3 ? 'En Progreso' : 'Terminado'}}</label>
-
+</td>
 
                      
               </tr>
