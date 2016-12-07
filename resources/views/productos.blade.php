@@ -11,25 +11,7 @@
         <div class="col-lg-9 col-md-9 col-sm-8 col-md-push-3">
           <div class="aa-product-catg-content">
             <div class="aa-product-catg-head">
-              <div class="aa-product-catg-head-left">
-                <form action="" class="aa-sort-form">
-                  <label for="">Sort by</label>
-                  <select name="">
-                    <option value="1" selected="Default">Default</option>
-                    <option value="2">Name</option>
-                    <option value="3">Price</option>
-                    <option value="4">Date</option>
-                  </select>
-                </form>
-                <form action="" class="aa-show-form">
-                  <label for="">Show</label>
-                  <select name="">
-                    <option value="1" selected="12">12</option>
-                    <option value="2">24</option>
-                    <option value="3">36</option>
-                  </select>
-                </form>
-              </div>
+              
               <div class="aa-product-catg-head-right">
                 <a id="grid-catg" href="#"><span class="fa fa-th"></span></a>
                 <a id="list-catg" href="#"><span class="fa fa-list"></span></a>
@@ -56,9 +38,8 @@
                   </figure>                         
                   <div class="aa-product-hvr-content">
 
-                    <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
-                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a>
-                    <a name="prueba"  data-toggle2="tooltip" data-placement="top" title="Quick View" ><span class="fa fa-search" ng-click="toggle('add', {{$a->id}})"></span></a>                               
+                   
+                    <a name="prueba"  data-toggle2="tooltip" data-placement="top" title="Vista Rapida" ><span class="fa fa-search" ng-click="toggle('add', {{$a->id}})"></span></a>                               
                   
                   </div>
                   <!-- product badge -->
@@ -93,7 +74,7 @@
                           <div class="aa-product-view-content">
                             <h4><% nombre %></h4>
                             <div class="aa-price-block">
-                              <div id="precio" class="aa-product-view-price">$ <% precio %> </div>
+                              <div id="precio" class="aa-product-view-price"><% precio | currency %></div>
                               <p class="aa-product-avilability">Existencia: <span id="existencia"> <% existencia %> </span></p>
                             </div>
                             <p></p>
@@ -135,16 +116,7 @@
         <div class="col-lg-3 col-md-3 col-sm-4 col-md-pull-9">
           <aside class="aa-sidebar">
             <!-- single sidebar -->
-            <div class="aa-sidebar-widget">
-              <h3>Category</h3>
-              <ul class="aa-catg-nav">
-                <li><a href="#">Men</a></li>
-                <li><a href="">Women</a></li>
-                <li><a href="">Kids</a></li>
-                <li><a href="">Electornics</a></li>
-                <li><a href="">Sports</a></li>
-              </ul>
-            </div>
+            
             <!-- single sidebar -->
             
             <!-- single sidebar -->
@@ -152,63 +124,30 @@
             <!-- single sidebar -->
             
             <!-- single sidebar -->
+         
             <div class="aa-sidebar-widget">
-              <h3>Recently Views</h3>
+              <h3>Populares</h3>
               <div class="aa-recently-views">
                 <ul>
+                   @foreach($artvisitas As $a)
                   <li>
-                    <a href="#" class="aa-cartbox-img"><img alt="img" src="img/woman-small-2.jpg"></a>
+                    <a href="{{url("/detaproducto")}}/{{$a->id}}" class="aa-cartbox-img"><img alt="img" src="{{asset("imgart/$a->imagen")}}"></a>
                     <div class="aa-cartbox-info">
-                      <h4><a href="#">Product Name</a></h4>
-                      <p>1 x $250</p>
+                      <h4><a href="{{url("/detaproducto")}}/{{$a->id}}">{{$a->nombre}}</a></h4>
+                      <p>${{number_format($a->precio-($a->precio*$a->promo), 2, '.', ',')}}</p>
+                      <hr>
                     </div>                    
                   </li>
-                  <li>
-                    <a href="#" class="aa-cartbox-img"><img alt="img" src="img/woman-small-1.jpg"></a>
-                    <div class="aa-cartbox-info">
-                      <h4><a href="#">Product Name</a></h4>
-                      <p>1 x $250</p>
-                    </div>                    
-                  </li>
-                   <li>
-                    <a href="#" class="aa-cartbox-img"><img alt="img" src="img/woman-small-2.jpg"></a>
-                    <div class="aa-cartbox-info">
-                      <h4><a href="#">Product Name</a></h4>
-                      <p>1 x $250</p>
-                    </div>                    
-                  </li>                                      
+                  
+            @endforeach      
+                                                   
                 </ul>
               </div>                            
             </div>
+            </div>
+            
             <!-- single sidebar -->
-            <div class="aa-sidebar-widget">
-              <h3>Top Rated Products</h3>
-              <div class="aa-recently-views">
-                <ul>
-                  <li>
-                    <a href="#" class="aa-cartbox-img"><img alt="img" src="img/woman-small-2.jpg"></a>
-                    <div class="aa-cartbox-info">
-                      <h4><a href="#">Product Name</a></h4>
-                      <p>1 x $250</p>
-                    </div>                    
-                  </li>
-                  <li>
-                    <a href="#" class="aa-cartbox-img"><img alt="img" src="img/woman-small-1.jpg"></a>
-                    <div class="aa-cartbox-info">
-                      <h4><a href="#">Product Name</a></h4>
-                      <p>1 x $250</p>
-                    </div>                    
-                  </li>
-                   <li>
-                    <a href="#" class="aa-cartbox-img"><img alt="img" src="img/woman-small-2.jpg"></a>
-                    <div class="aa-cartbox-info">
-                      <h4><a href="#">Product Name</a></h4>
-                      <p>1 x $250</p>
-                    </div>                    
-                  </li>                                      
-                </ul>
-              </div>                            
-            </div>
+          
           </aside>
         </div>
        

@@ -26,24 +26,12 @@
                     <h3>{{$articulo->nombre}}</h3>
                     <div class="aa-price-block">
                       <span class="aa-product-view-price">${{number_format($articulo->precio-($articulo->precio*$articulo->promo), 2, '.', ',' )}}</span>
-                      <p class="aa-product-avilability">Avilability: <span>{{$articulo->existencia}}</span></p>
+                      <p class="aa-product-avilability">Existencia: <span>{{$articulo->existencia}}</span></p>
                     </div>
                     <p>{{$articulo->descripcion}}</p>
                   
                    
-                    <div class="aa-prod-quantity">
-                      <form action="">
-                        <select id="" name="">
-                          <option selected="1" value="0">1</option>
-                          <option value="1">2</option>
-                          <option value="2">3</option>
-                          <option value="3">4</option>
-                          <option value="4">5</option>
-                          <option value="5">6</option>
-                        </select>
-                      </form>
-                      
-                    </div>
+                  
                     <div class="aa-prod-view-bottom">
                       <a class="aa-add-to-cart-btn" href="{{url("/agregarcarrdetalle")}}/{{$articulo->id}}">Añadir Al carrito</a>
                      

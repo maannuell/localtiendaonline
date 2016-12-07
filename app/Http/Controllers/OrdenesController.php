@@ -66,7 +66,7 @@ $iduser = Auth::user()->id;
       if ($si>0){
       	return Redirect('/ircarrito');
       }else {
-	$date=date('Y-m-n');
+	$date=date('Y-m-d');
 
       	$orden = new Ordene();
       	$orden->id_cliente=$iduser;

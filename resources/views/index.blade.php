@@ -23,7 +23,7 @@
                <span data-seq>Ahora Hasta Un 30%</span>                
                 <h2 data-seq>Laptop HP</h2>                
                 <p data-seq>Solo modelos Participantes</p>
-                <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">Comprar Ahora</a>
+                <a data-seq href="{{url("/")}}" class="aa-shop-now-btn aa-secondary-btn">Comprar Ahora</a>
               </div>
             </li>
             <!-- single slide item -->
@@ -35,7 +35,7 @@
                 <span data-seq>Ahora Hasta Un 20%</span>                
                 <h2 data-seq>Laptop Dell</h2>                
                 <p data-seq>Solo Modelos Participantes</p>
-                <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">Comprar Ahora</a>
+                <a data-seq href="{{url("/")}}" class="aa-shop-now-btn aa-secondary-btn">Comprar Ahora</a>
               </div>
             </li>
             <!-- single slide item -->
@@ -47,7 +47,7 @@
                 <span data-seq>Ahora Hasta Un 10%</span>                
                 <h2 data-seq>Laptop Accer</h2>                
                 <p data-seq>Solo Modelos Participantes</p>
-                <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">Comprar Ahora</a>
+                <a data-seq href="{{url("/")}}" class="aa-shop-now-btn aa-secondary-btn">Comprar Ahora</a>
               </div>
             </li>
             <!-- single slide item -->           
@@ -59,7 +59,7 @@
                 <span data-seq>Ahora Hasta un 5%</span>                
                 <h2 data-seq>Laptop Asus</h2>                
                 <p data-seq>Solo Modelos Participantes</p>
-                <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">Comprar Ahora</a>
+                <a data-seq href="{{url("/")}}" class="aa-shop-now-btn aa-secondary-btn">Comprar Ahora</a>
               </div>
             </li>
             <!-- single slide item -->  
@@ -165,7 +165,7 @@
                         </figcaption>
                       </figure>                     
                       <div class="aa-product-hvr-content">
-                       <a name="prueba"  data-toggle2="tooltip" data-placement="top" title="Quick View" ><span class="fa fa-search" ng-click="toggle('add', {{$a->id}})"></span></a>                                
+                       <a name="prueba"  data-toggle2="tooltip" data-placement="top" title="Vista Rapida" ><span class="fa fa-search" ng-click="toggle('add', {{$a->id}})"></span></a>                                
                       </div>
                       <!-- product badge -->
                     
@@ -237,7 +237,7 @@
                           <div class="aa-product-view-content">
                             <h4><% nombre %></h4>
                             <div class="aa-price-block">
-                              <div id="precio" class="aa-product-view-price">$ <% precio %> </div>
+                              <div id="precio" class="aa-product-view-price"><% precio | currency %> </div>
                               <p class="aa-product-avilability">Existencia: <span id="existencia"> <% existencia %> </span></p>
                             </div>
                             <p></p>

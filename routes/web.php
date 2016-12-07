@@ -82,3 +82,11 @@ Route::post('/agregarfecha/{id}','OrdenesController@fechaentrega');
 Route::get('/pruebacorreo/{id}','OrdenesController@correo');
 //pdf con ordenes y detalle
 Route::get('/pdfordenes/{id}','OrdenesController@pdfordenes');
+
+//buscador
+Route::get('/searchredirect', function(){
+	$search = urlencode(e(Request::get('search')));
+	
+	Return Redirect('/search/'.$search);
+});
+Route::get('/search/{search}','ArticuloController@busqueda');

@@ -75,8 +75,13 @@ public function ver($id){
   ->where('id_subcategoria','=',$id)
   ->paginate(3);
 
+  $artvisitas=DB::table('articulos')
+->orderBy('visitas', 'desc')
+->limit(5)
+->get();
+
  if (Auth::guest()){
-  return view('productos',compact('articulo'));
+  return view('productos',compact('articulo','artvisitas'));
  }else{
 $iduser = Auth::user()->id;
 
@@ -104,7 +109,10 @@ $total = DB::table('cartemplate As c')
 
 
 
-   return view('productos',compact('articulo','countcarrito','articuloscar','total'));
+
+
+
+   return view('productos',compact('articulo','countcarrito','articuloscar','total','artvisitas'));
 
  }
 
@@ -119,8 +127,13 @@ public function vermarca($idmarca){
   ->where('id_marca','=',$idmarca)
   ->paginate(3);
 
+  $artvisitas=DB::table('articulos')
+->orderBy('visitas', 'desc')
+->limit(5)
+->get();
+
  if (Auth::guest()){
-  return view('productos',compact('articulo'));
+  return view('productos',compact('articulo','artvisitas'));
  }else{
 $iduser = Auth::user()->id;
 
@@ -147,7 +160,7 @@ $total = DB::table('cartemplate As c')
 ->get();
 
 
-   return view('productos',compact('articulo','countcarrito','articuloscar','total'));
+   return view('productos',compact('articulo','countcarrito','articuloscar','total','artvisitas'));
 
  }
   
@@ -371,7 +384,52 @@ public function modales($id ){
   return Articulo::find($id);
 }
 
+  public function busqueda($search){
 
+      $search = urldecode($search);
+      
+      $articulo=DB::table("articulos")
+      ->where('nombre', 'LIKE', '%'.$search.'%')
+      ->orderBy('id','desc')
+      ->paginate(3);
+
+      $artvisitas=DB::table('articulos')
+->orderBy('visitas', 'desc')
+->limit(5)
+->get();
+
+      if (Auth::guest()){
+  return view('productos',compact('articulo','artvisitas'));
+ }else{
+$iduser = Auth::user()->id;
+
+
+$countcarrito = DB::table('cartemplate')
+ ->where('estatus','=','0')
+ ->where('id_cliente','=', $iduser)
+ ->count();
 
  
+
+$articuloscar=DB::table('cartemplate As c')
+->join('articulos As a','a.id','=','c.id_articulo')
+->where('c.estatus','=','0')
+->where('c.id_cliente','=', $iduser)
+->select('a.*','c.idpartida','c.estatus','c.id_cliente')
+->get();
+
+$total = DB::table('cartemplate As c')
+->join('articulos As a','a.id','=','c.id_articulo')
+->where('c.estatus','=','0')
+->where('c.id_cliente','=', $iduser)
+->select(DB::raw('sum(a.precio-(a.precio*a.promo)) as todo'))
+->get();
+
+
+
+   return view('productos',compact('articulo','countcarrito','articuloscar','total','artvisitas'));
+
+  }
+
+ }
 }

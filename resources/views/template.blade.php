@@ -123,7 +123,7 @@
                   </li>
                   @endif
                   
-                  <li class="hidden-xs"><a href="{{url("/ircarrito")}}">Mi Carrito</a></li>
+                  
                   
                 
 
@@ -163,7 +163,8 @@
                 </a>
                         @else 
               <div class="aa-cartbox">
-                <a class="aa-cart-link" href="#">
+
+                <a class="aa-cart-link" href="{{url("/ircarrito")}}">
                   <span class="fa fa-shopping-cart"></span>
                   <span class="aa-cart-title">Carrito</span>
                    <span class="aa-cart-notify">{{$countcarrito}}</span>
@@ -210,8 +211,9 @@
               <!-- / cart box -->
               <!-- search box -->
               <div class="aa-search-box">
-                <form action="">
-                  <input type="text" name="" id="" placeholder="Buscar">
+                <form role="search"  action="{{url("/searchredirect")}}">
+                
+                  <input type="text" name="search" id="search" placeholder="Buscar">
                   <button type="submit"><span class="fa fa-search"></span></button>
                 </form>
               </div>
@@ -241,7 +243,7 @@
           <div class="navbar-collapse collapse">
             <!-- Left nav -->
             <ul class="nav navbar-nav">
-              <li><a href="index.html">Inicio</a></li>
+              <li><a href="{{url("/")}}">Inicio</a></li>
               <li><a href="#">Computadoras<span class="caret"></span></a>
                 <ul class="dropdown-menu">                
                   <li><a href="#">Computadoras<span class="caret"></span></a>
@@ -422,7 +424,7 @@
               </li>
                         
               
-              <li><a href="contact.html">Contacto</a></li>
+              
             
             </ul>
           </div><!--/.nav-collapse -->
