@@ -246,5 +246,27 @@ public function correo($idorden){
    return Redirect("/");
 }
 
+public function pdfordenes($idorden){
+  
+
+  $iduser = Auth::user()->id;
+   $user=user::find($iduser);
+   $orden=Ordene::find($idorden);
+   $detalle=DB::table('detalle_orden As o')
+   ->join('articulos As a','a.id','=','o.id_articulo')
+   ->where('id_orden','=',$idorden)
+   ->get();
+
+  $sumtotal=DB::table('detalle_orden')
+  ->where('id_orden','=', $idorden)
+  ->select(DB::raw('sum(preciouni*cantidad) as sumtotal'))
+  ->first();
+
+     $vista=view('pdf.pdfcompra',compact('user','orden','detalle','sumtotal'));
+     $dompdf=\App::make('dompdf.wrapper');
+     $dompdf->loadHTML($vista);
+     return $dompdf->stream('ListaOrden.pdf');
+}
+
 
 }

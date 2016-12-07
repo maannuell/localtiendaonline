@@ -80,3 +80,5 @@ Route::get('cant/{ca}/{id}','OrdenesController@cantidad');
 Route::post('/agregarfecha/{id}','OrdenesController@fechaentrega');
 //prueba correo
 Route::get('/pruebacorreo/{id}','OrdenesController@correo');
+//pdf con ordenes y detalle
+Route::get('/pdfordenes/{id}','OrdenesController@pdfordenes');

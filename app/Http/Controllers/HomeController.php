@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -24,7 +25,28 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $countcarrito = DB::table('cartemplate')
+ if (Auth::guest()){
+$countcarrito = 0;
+
+ $artdescuento=DB::table('articulos')
+->orderBy('promo', 'desc')
+->limit(3)
+->get();
+
+$artvisitas=DB::table('articulos')
+->orderBy('visitas', 'desc')
+->limit(3)
+->get();
+
+
+
+
+        return view('index',compact('countcarrito','artdescuento','artvisitas'));
+
+  }else{
+
+    $iduser = Auth::user()->id;
+$countcarrito = DB::table('cartemplate')
  ->where('estatus','=','0')
  ->where('id_cliente','=', $iduser)
  ->count();
@@ -43,5 +65,6 @@ $artvisitas=DB::table('articulos')
 
 
         return view('index',compact('countcarrito','artdescuento','artvisitas'));
+    }
     }
 }

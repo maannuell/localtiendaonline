@@ -55,6 +55,11 @@
 <td>
   <label class="label-success">{{$o->estatus==3 ? 'En Progreso' : 'Terminado'}}</label>
 </td>
+<td>
+  
+      <a href="{{url("/pdfordenes")}}/{{$o->o_id}}" class="btn btn-danger btn-xs"><span
+                                    class="glyphicon glyphicon-remove" aria-hidden="true">Pdf</span> </a>
+</td>
 
                      
               </tr>
