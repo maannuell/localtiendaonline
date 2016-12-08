@@ -12,9 +12,15 @@ class SubcategoriaController extends Controller
         $nuevo->nombre=$datos->input('nombre');
         $nuevo->descripcion=$datos->input('descripcion');
         $nuevo->id_categoria=$datos->input('categoria');
-        $nuevo->save();
 
-        return Redirect('subcategorias');
+        if($nuevo->save()){
+
+         return back()->with('si','datos Guardados');
+       } else {
+         return back()->with('no','eror al guardar');
+       }
+
+        
 	}
 
 }

@@ -7,6 +7,18 @@
                   <h3 class="box-title">Nuevo Articulo</h3>
                 </div><!-- /.box-header -->
 
+ @if(session()->has('si'))
+                <script>alertify
+                .alert("Cargado Correctamente", function(){
+                
+                });</script>        
+ 
+                @elseif(session()->has('no'))
+                <script>alertify
+                .alert("Error Al Cargar", function(){
+                
+                });</script>    
+                @endif
 
 @stop
 

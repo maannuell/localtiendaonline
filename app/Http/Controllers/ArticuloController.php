@@ -39,9 +39,12 @@ class ArticuloController extends Controller
         $nuevo->imagen=$nombre;
         $nuevo->existencia=$datos->input('existencia');
         $nuevo->promo=$datos->input('promo');
-        $nuevo->save();
+         if($nuevo->save()){
 
-        return Redirect('articulos');
+         return back()->with('si','datos Guardados');
+       } else {
+         return back()->with('no','eror al guardar');
+       }
     }
 
 

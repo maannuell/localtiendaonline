@@ -30,12 +30,12 @@ $countcarrito = 0;
 
  $artdescuento=DB::table('articulos')
 ->orderBy('promo', 'desc')
-->limit(3)
+->limit(5)
 ->get();
 
 $artvisitas=DB::table('articulos')
 ->orderBy('visitas', 'desc')
-->limit(3)
+->limit(5)
 ->get();
 
 
@@ -53,12 +53,12 @@ $countcarrito = DB::table('cartemplate')
 
  $artdescuento=DB::table('articulos')
 ->orderBy('promo', 'desc')
-->limit(3)
+->limit(5)
 ->get();
 
 $artvisitas=DB::table('articulos')
 ->orderBy('visitas', 'desc')
-->limit(3)
+->limit(5)
 ->get();
 
 

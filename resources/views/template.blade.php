@@ -101,6 +101,8 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                   </a>
                        <ul class="dropdown-menu" role="menu">
+                                    <li><a href="{{url('/miscompras')}}">Mis Compras</a></li>
+
                                     <li>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();

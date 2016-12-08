@@ -8,6 +8,21 @@
                 </div><!-- /.box-header -->
 
 
+@if(session()->has('si'))
+                <script>alertify
+                .alert("Guardado Correctamente", function(){
+                
+                });</script>        
+ 
+                @elseif(session()->has('no'))
+                <script>alertify
+                .alert("Error Al Guardar", function(){
+                
+                });</script>    
+                @endif
+
+
+
 @stop
 
 @section('contenido')

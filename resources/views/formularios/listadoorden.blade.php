@@ -7,6 +7,19 @@
                   <h3 class="box-title">Administrador de Ordenes</h3>
                 </div><!-- /.box-header -->
 
+@if(session()->has('si'))
+                <script>alertify
+                .alert("Fecha Agregada Correctamente", function(){
+                
+                });</script>        
+ 
+                @elseif(session()->has('no'))
+                <script>alertify
+                .alert("Error Al Agregar", function(){
+                
+                });</script>    
+                @endif
+
 
 @stop
 

@@ -65,6 +65,7 @@ $iduser = Auth::user()->id;
       
       if ($si>0){
       	return Redirect('/ircarrito');
+        //return redirect()->back()->with('success', ['your message,here']); 
       }else {
 	$date=date('Y-m-d');
 
@@ -209,15 +210,62 @@ $ordenes=DB::table('ordenes As o')
 
    return view ('formularios.listadoorden',compact('ordenes','user'));
 }
+
+public function miscompraso(){
+ $iduser = Auth::user()->id;
+
+$countcarrito = DB::table('cartemplate')
+ ->where('estatus','=','0')
+ ->where('id_cliente','=', $iduser)
+ ->count();
+
+ 
+
+$articuloscar=DB::table('cartemplate As c')
+->join('articulos As a','a.id','=','c.id_articulo')
+->where('c.estatus','=','0')
+->where('c.id_cliente','=', $iduser)
+->select('a.*','c.idpartida','c.estatus','c.id_cliente')
+->get();
+
+$total = DB::table('cartemplate As c')
+->join('articulos As a','a.id','=','c.id_articulo')
+->where('c.estatus','=','0')
+->where('c.id_cliente','=', $iduser)
+->select(DB::raw('sum(a.precio-(a.precio*a.promo)) as todo'))
+->get();
+
+
+
+  $ordenes=DB::table('ordenes As o')
+->join('users As u','u.id','=','o.id_cliente')
+->join('paqueterias As p','p.id','=','o.id_paqueteria')
+->join('ciudades As c','c.id','=','o.id_ciudad')
+->select('o.*','o.id As o_id','u.*','p.nombre as nombre_paquete','c.nombre As nombre_ciudad')
+->where('o.id_cliente','=',$iduser)
+->whereIn('o.estatus', ['3', '4'])
+->get();
+
+
+ return view('vmiscompras',compact('countcarrito','articuloscar','total','ordenes'));
+}
+
+
 public function fechaentrega($id , Request $datos){
 
 
      $orden=Ordene::find($id);
      $orden->fecha_envio=$datos->input('fecha_envio');
      $orden->estatus=4;
-     $orden->save();
      
-     return Redirect('/consultaordenes');
+      if($orden->save()){
+
+         return back()->with('si','datos Guardados');
+       } else {
+         return back()->with('no','eror al guardar');
+       }
+     
+     
 
 }
 
@@ -244,25 +292,37 @@ public function correo($idorden){
         });
 
    return Redirect("/");
+  
 }
 
 public function pdfordenes($idorden){
   
 
-  $iduser = Auth::user()->id;
-   $user=user::find($iduser);
+   $iduser=DB::table('ordenes')
+   ->select('id_cliente')
+   ->where('id','=',$idorden)
+   ->first();
+   $user=user::find($iduser->id_cliente);
    $orden=Ordene::find($idorden);
    $detalle=DB::table('detalle_orden As o')
    ->join('articulos As a','a.id','=','o.id_articulo')
    ->where('id_orden','=',$idorden)
    ->get();
 
+   $generales=DB::table('ordenes As o')
+   ->join('paqueterias As p','p.id','=','o.id_paqueteria')
+   ->join('ciudades As c','c.id','=','o.id_ciudad')
+   ->select('o.*','p.nombre AS nombrepaquete','c.nombre As ciudadnombre')
+   ->where('o.id','=',$idorden)
+   ->first();
+   
+
   $sumtotal=DB::table('detalle_orden')
   ->where('id_orden','=', $idorden)
   ->select(DB::raw('sum(preciouni*cantidad) as sumtotal'))
   ->first();
 
-     $vista=view('pdf.pdfcompra',compact('user','orden','detalle','sumtotal'));
+     $vista=view('pdf.pdfcompra',compact('user','orden','detalle','sumtotal','generales'));
      $dompdf=\App::make('dompdf.wrapper');
      $dompdf->loadHTML($vista);
      return $dompdf->stream('ListaOrden.pdf');

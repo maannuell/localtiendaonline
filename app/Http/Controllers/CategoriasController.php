@@ -13,9 +13,14 @@ class CategoriasController extends Controller
        $nuevo= new Categoria();
        $nuevo->nombre=$datos->input('nombre');
        $nuevo->descripcion=$datos->input('descripcion');
-       $nuevo->save();
+       if($nuevo->save()){
 
-       return Redirect('categorias');
+        return back()->with('si','datos Guardados');
+       } else {
+       	 return back()->with('no','eror al guardar');
+       }
+
+       
     }
 
      

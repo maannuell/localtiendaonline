@@ -27,10 +27,17 @@ public function guardar(Request $datos){
   $nuevo->email=$datos->input('email');
   $nuevo->password=bcrypt($datos->input('password'));
   $nuevo->rol=$datos->input('rol');
-  $nuevo->save();
+  
+
+   if($nuevo->save()){
+
+         return back()->with('si','datos Guardados');
+       } else {
+         return back()->with('no','eror al guardar');
+       }
 
 
-  return Redirect('/altausuarios');
+  
 
 }
 

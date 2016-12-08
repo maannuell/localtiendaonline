@@ -90,3 +90,5 @@ Route::get('/searchredirect', function(){
 	Return Redirect('/search/'.$search);
 });
 Route::get('/search/{search}','ArticuloController@busqueda');
+
+Route::get('/miscompras','OrdenesController@miscompraso');

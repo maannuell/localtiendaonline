@@ -20,8 +20,11 @@ tr:nth-child(even) {
 </style>
 </head>
 <body>
-<h1>Estimado {{$user->name}}</h1>
-<h2>En triple "B" Le Compartimos el Detalle de Su Compra</h2>
+<h1>Cliente: {{$user->name}}</h1>
+<h2>En triple "B"</h2>
+<h3>Fecha: {{$generales->fecha}}</h3>
+<h3>Direccion Envio: {{$generales->direnvio}}</h3><h3>Ciudad: {{$generales->ciudadnombre}}</h3>
+<h3>Paqueteria: {{$generales->nombrepaquete}}</h3>
 <table>
   <tr>
     <th>id_orden</th>
@@ -44,6 +47,7 @@ tr:nth-child(even) {
   
 </table>
 <hr>
+<br>
 				<label>Total:${{number_format($sumtotal->sumtotal, 2, '.', ',')}}</label>
 
 </body>

@@ -33,6 +33,14 @@
      <link rel="stylesheet" href="css/sistemalaravel.css">
      <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
+   
+     <link rel="stylesheet" href="css/alertify.min.css" />
+ 
+<link rel="stylesheet" href="css/themes/default.min.css" />
+ 
+<script src="js/alertify.min.js"></script>
+
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

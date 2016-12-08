@@ -13,9 +13,12 @@ class MarcasController extends Controller
           $nuevo=new Marca();
           $nuevo->nombre=$datos->input('nombre');
           $nuevo->descripcion=$datos->input('descripcion');
-          $nuevo->save();
+         if($nuevo->save()){
 
-
-    	 return Redirect('marcas');
+        return back()->with('si','datos Guardados');
+       } else {
+       	 return back()->with('no','eror al guardar');
+       }
+    	 
     }
 }

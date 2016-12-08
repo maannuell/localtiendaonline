@@ -30,14 +30,14 @@ class MaatwebsiteDemoController extends Controller
 				
 				if(!empty($insert)){
 					Articulo::insert($insert);
-					return back()->with('success','Insercion masiva superada.');
+					return back()->with('si','Insercion masiva superada.');
 				}
 
 			}
 
 		}
 
-		return back()->with('error','error favor de checar los campos del documento');
+		return back()->with('no','error favor de checar los campos del documento');
 	}
 
 

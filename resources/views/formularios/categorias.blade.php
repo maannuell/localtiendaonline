@@ -7,6 +7,19 @@
                   <h3 class="box-title">Nueva Categoria</h3>
                 </div><!-- /.box-header -->
 
+                @if(session()->has('si'))
+                <script>alertify
+                .alert("Guardados Correctamente", function(){
+                
+                });</script>        
+ 
+                @elseif(session()->has('no'))
+                <script>alertify
+                .alert("Eror Al guardar", function(){
+                
+                });</script>    
+                @endif
+
 
 @stop
 

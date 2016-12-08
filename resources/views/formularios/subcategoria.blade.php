@@ -7,6 +7,19 @@
                   <h3 class="box-title">Nuevo SubCategoria</h3>
                 </div><!-- /.box-header -->
 
+                  @if(session()->has('si'))
+                <script>alertify
+                .alert("Guardado Correctamente", function(){
+                
+                });</script>        
+ 
+                @elseif(session()->has('no'))
+                <script>alertify
+                .alert("Error Al Guardar", function(){
+                
+                });</script>    
+                @endif
+
 
 @stop
 
